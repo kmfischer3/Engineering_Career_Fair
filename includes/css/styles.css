@@ -1,0 +1,16 @@
+.content {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.glyphicon-heart {
+	color: #ff6666;
+}
+.glyphicon-heart-empty {
+	color: #ff6666;
+}
+.popover-content {
+   	height: 300px;
+   	overflow-y: scroll;
+}

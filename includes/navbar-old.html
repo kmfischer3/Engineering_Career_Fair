@@ -1,0 +1,112 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="/~kristina/Career_Connections/includes/js/scripts.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container">
+	<div class="navbar-header">
+		<a href="#" id="popover" class="navbar-toggle collapsed"><span class="glyphicon glyphicon-search"></span></a>
+		<div id="popover-head" class="hide">Filter Results</div>
+		<div id="popover-content" class="hide">
+			<form id="search_form" onsubmit="transformFormData();">
+				<div class="form-group">
+				  <label for="searchterm">Search:</label>
+				  <input type="text" class="form-control" id="searchterm">
+				</div>
+				<div class="form-group">
+				  	<label for="day">Day(s):</label>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="d1">Monday, Sept. 9</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="d2">Wednesday, Sept. 11</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="d3">Thursday, Sept. 12</label>
+					</div>
+				</div>
+				<div class="form-group">
+				  	<label for="major">Major(s):</label>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m1">ABC</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m2">DEF</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m3">GHI</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m4">JKL</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m5">MNO</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m6">PQR</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m7">STU</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m8">VWX</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="m9">YZ1</label>
+					</div>
+				</div>
+				<div class="form-group">
+				  	<label for="position">Position(s):</label>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="p1">Internship</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="p2">Full-Time</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="p3">Part-Time</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="p4">Co-Op</label>
+					</div>
+				</div>
+				<div class="form-group">
+				  	<label for="citizenship">Citizenship:</label>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="c1">Citizen</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="c2">Resident</label>
+					</div>
+					<div class="checkbox">
+					  <label><input type="checkbox" value="" id="c3">Greencard</label>
+					</div>
+				</div>
+				<div class="form-group pull-right">
+					  <input class="btn btn-primary" type="submit" value="Submit">
+				</div>
+			</form>
+		</div>
+		<a href="index.php" class="navbar-brand">
+			<span class="glyphicon glyphicon-calendar"></span> Fall Career Fair
+			<a href="index.php">List</a> | <a href="day1.php">Map</a>
+		</a>
+	</div>
+</div>
+</nav>
+
+<script type="text/javascript">
+
+$('#popover').popover({ 
+    placement: 'left',
+    html : true,
+    title: function() {
+      return $("#popover-head").html();
+    },
+    content: function() {
+      return $("#popover-content").html();
+    }
+});
+
+</script>
