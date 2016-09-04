@@ -5,7 +5,7 @@
 
   // Set up JSON response
   $response = array();
-  $response["status_code"] = "_UNKNOWN";
+  //$response["status_code"] = "_UNKNOWN";
 
   if (mysqli_connect_errno()) 
   {
@@ -15,7 +15,7 @@
   else 
   {
 
-  	$query = "SELECT * FROM companies;";
+  	$query = "SELECT * FROM company;";
 
         // Run the query, check for sql error or empty response
         $all_companies = mysqli_query($connection, $query);
@@ -32,7 +32,7 @@
         else
         {
         		
-		$response["status_code"] = "OK";
+		//$response["status_code"] = "OK";
 
 		// Add each company to the response            
 		while($company = mysqli_fetch_assoc($all_companies))
@@ -46,9 +46,11 @@
   }
 
 /* Output pretty JSON */
-$json = json_encode($response);
-//printf("%s", $json);
-
+$json = json_encode($response, JSON_PRETTY_PRINT);
+echo "<pre>";
+printf("%s", $json);
+echo "</pre>";
+/*
 foreach ($response as $value) {
 
 	$id 	= $value['id'];
@@ -70,6 +72,6 @@ foreach ($response as $value) {
 	";
 
 }
-
+*/
 ?>
 
