@@ -22,32 +22,28 @@
 	var div = document.createElement("div");
 	div.className = "list-group";
 
-	for (var i = 0; i < data.length; i++) {
-
-		var id 		= data[i]['id'];
-		var name 	= data[i]['name'];
-		var desc 	= "<?php echo $lorem_med; ?>";
+	for (var company_id in data) {
+		var company = data[company_id];
 
 		var a = document.createElement("a");
 		a.href = "#";
-		$(a).click(i, function(e) {
-			company_index = e.data;
-			load_company_profile(company_index);
+		$(a).click(company.id, function(e) {
+			company_id = e.data;
+			load_company_profile(company_id);
 		});
 		a.className = "list-group-item";
 
 		var h4 = document.createElement("h4");
 		h4.className = "list-group-item-heading";
-		h4.appendChild(document.createTextNode(name));
+		h4.appendChild(document.createTextNode(company.name));
 
 		var p = document.createElement("p");
 		p.className = "list-group-item-text";
-		p.appendChild(document.createTextNode(desc));
-	
+		p.appendChild(document.createTextNode(company.description));
+
 		div.appendChild(a);
 		a.appendChild(h4);
 		a.appendChild(p);
-
 	}
 
 	content_div.appendChild(div);

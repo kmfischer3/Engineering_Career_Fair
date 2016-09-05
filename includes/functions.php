@@ -8,7 +8,7 @@
 			return null;
 		} 
 
-	  	$query = "SELECT * FROM company;";
+	  	$query = "SELECT * FROM companies;";
 
 		// Run the query, check for sql error or empty response
 		$all_companies = mysqli_query($connection, $query);
@@ -24,7 +24,7 @@
 		$response = array();
 
 		while($company = mysqli_fetch_assoc($all_companies)) {
-		    	array_push($response, $company);
+			$response[$company["id"]] = $company;
 		}
 
 		return $response;
