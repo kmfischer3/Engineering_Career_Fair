@@ -68,3 +68,26 @@ function load_companies() {
 	$("#company_profile").addClass('hidden');
 }
 
+/*
+ * Split the search keywords by space characters. Any company that
+ * includes one of these keywords in its name will have its ID included
+ * in the result set.
+ */
+function search_companies(keywords) {
+	keywords = keywords.toLowerCase();
+	terms = keywords.split(" ");
+	
+	results = [];
+	terms.forEach(function(term, index, array) {
+		for (var company_id in data) {
+			company = data[company_id];
+			if (company.name.toLowerCase().indexOf(term) != -1) {
+				if (results.indexOf(company_id) == -1) {
+					results.push(company_id);
+				}
+			}
+		}
+	});
+	
+	return results;
+}
