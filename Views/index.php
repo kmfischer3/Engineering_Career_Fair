@@ -17,38 +17,7 @@
 
 <script src="../includes/js/functions.js"></script>
 <script type="text/javascript">
-
-	var content_div = document.getElementById("company_list");
-	var div = document.createElement("div");
-	div.className = "list-group";
-
-	for (var company_id in data) {
-		var company = data[company_id];
-
-		var a = document.createElement("a");
-		a.href = "#";
-		$(a).click(company.id, function(e) {
-			company_id = e.data;
-			load_company_profile(company_id);
-		});
-		a.className = "list-group-item";
-
-		var h4 = document.createElement("h4");
-		h4.className = "list-group-item-heading";
-		h4.appendChild(document.createTextNode(company.name));
-
-		var p = document.createElement("p");
-		p.className = "list-group-item-text";
-		p.appendChild(document.createTextNode(company.description));
-
-		div.appendChild(a);
-		a.appendChild(h4);
-		a.appendChild(p);
-	}
-
-	content_div.appendChild(div);
-
-
+	load_companies();
 </script>
 
 <?php include("../includes/page_bottom.php");?>
