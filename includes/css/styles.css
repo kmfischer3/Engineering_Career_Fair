@@ -13,3 +13,7 @@
    	height: 300px;
    	overflow-y: scroll;
 }
+
+table td {
+	text-align: center;
+}

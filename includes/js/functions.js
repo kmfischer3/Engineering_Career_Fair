@@ -1,23 +1,36 @@
 function load_company_profile(company_id) {
 
 	company = data[company_id];
+	
+	citizen = [];
+	citizen_mask = company.citizen_mask;
+	
+	if ((citizen_mask & 4) == 4) {
+		citizen.push("US Citizen");
+	}
+	if ((citizen_mask & 2) == 2) {
+		citizen.push("US Permanent Resident");
+	}
+	if ((citizen_mask & 1) == 1) {
+		citizen.push("Visa Holder");
+	}
+	
+	
 
-	profile = '<div class="list-group">\
-			  <a href="#" class="list-group-item">Mon <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
-			  <a href="#" class="list-group-item">Wed <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
-			  <a href="#" class="list-group-item">Wed2 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
-		    </div>\
+	
+
+	$("#company_profile_day_list").html('<a href="#" class="list-group-item">Mon <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
+					     <a href="#" class="list-group-item">Wed <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
+					     <a href="#" class="list-group-item">Wed2 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>');
+		    /*
 		    <div>\
 		    	<ul>\
 		    		<li>name: ' + company.name + '</li>\
 		    		<li>website: ' + company.website + '</li>\
 		    		<li>description: ' + company.description + '</li>\
-		    		<li>citizen_mask: ' + company.citizen_mask + '</li>\
+		    		<li>citizen: ' + citizen.join(", "); + '</li>\
 		    	</ul>\
-		    </div>';
-
-	var content_div = document.getElementById("company_profile");
-	$(content_div).html(profile);
+		    </div>';*/
 
 	$("#company_list").addClass('hidden');
 	$("#company_profile").removeClass('hidden');
