@@ -4,12 +4,6 @@
 <?php include("../includes/page_top.php");?>
 <?php include("../includes/loremipsum.php");?>
 
-<script type="text/javascript">
-
-	var data = <?php echo get_company_db_json(); ?>;
-
-</script>
-
 <div id="company_list" class="content">
 </div>
 
@@ -165,7 +159,6 @@
 	</div>
 </div>
 
-<script src="../includes/js/functions.js"></script>
 <script type="text/javascript">
 	load_companies();
 </script>

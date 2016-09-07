@@ -4,9 +4,11 @@
 <?php include("../includes/page_top.php");?>
 <?php include("../includes/loremipsum.php");?>
 
-<?php 
+<script type="text/javascript">
 
-?>
+	var data = <?php echo get_company_db_json(); ?>;
+
+</script>
 
 <div class="content">
 	
@@ -133,6 +135,7 @@
 
 $( "#search" ).submit(function( event ) {
 	console.log( search_companies( $("#searchterm").val() ) );
+	console.log("hello");
 	//var result = search_companies( $("#searchterm").val() );
 	event.preventDefault();
 });
