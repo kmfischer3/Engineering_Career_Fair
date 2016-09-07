@@ -14,10 +14,6 @@ function load_company_profile(company_id) {
 	if ((citizen_mask & 1) == 1) {
 		citizen.push("Visa Holder");
 	}
-	
-	
-
-	
 
 	$("#company_profile_day_list").html('<a href="#" class="list-group-item">Mon <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
 					     <a href="#" class="list-group-item">Wed <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
@@ -34,11 +30,11 @@ function load_company_profile(company_id) {
 
 	$("#company_list").addClass('hidden');
 	$("#company_profile").removeClass('hidden');
-	
-	
 }
+views["load_company_profile"] = load_company_profile;
 
 function load_companies() {
+	$("#company_list").empty();
 
 	var content_div = document.getElementById("company_list");
 	var div = document.createElement("div");
@@ -52,7 +48,7 @@ function load_companies() {
 		a.href = "#";
 		$(a).click(company.id, function(e) {
 			company_id = e.data;
-			load_company_profile(company_id);
+			view("load_company_profile", company_id);
 		});
 		a.className = "list-group-item";
 		
@@ -67,6 +63,7 @@ function load_companies() {
 	$("#company_list").removeClass('hidden');
 	$("#company_profile").addClass('hidden');
 }
+views["load_companies"] = load_companies;
 
 /*
  * Split the search keywords by space characters. Any company that
