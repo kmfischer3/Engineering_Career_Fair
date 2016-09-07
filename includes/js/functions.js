@@ -33,15 +33,12 @@ function load_company_profile(company_id) {
 }
 views["load_company_profile"] = load_company_profile;
 
-function load_companies() {
-	$("#company_list").empty();
-
-	var content_div = document.getElementById("company_list");
+function display_companies(company_ids) {
 	var div = document.createElement("div");
 	div.className = "list-group";
 
 	var company_html = "";
-	for (var company_id in data) {
+	company_ids.forEach(function(company_id, index, array) {
 		var company = data[company_id];
 
 		var a = document.createElement("a");
@@ -56,12 +53,18 @@ function load_companies() {
 			<p>' + company.description + '</p>');
 
 		div.appendChild(a);
-	}
+	});
 
+	$("#company_list").empty();
+	var content_div = document.getElementById("company_list");
 	content_div.appendChild(div);
 
 	$("#company_list").removeClass('hidden');
 	$("#company_profile").addClass('hidden');
+}
+
+function load_companies() {
+	display_companies(Object.keys(data));
 }
 views["load_companies"] = load_companies;
 
