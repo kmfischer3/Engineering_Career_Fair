@@ -15,9 +15,10 @@ function load_company_profile(company_id) {
 		citizen.push("Visa Holder");
 	}
 
-	$("#company_profile_day_list").html('<a href="#" class="list-group-item">Mon <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
-					     <a href="#" class="list-group-item">Wed <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
-					     <a href="#" class="list-group-item">Wed2 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>');
+	$("#company_profile_day_list").html('<h4>Booth Locations</h4>\
+					     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Monday, Sept. 19 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
+					     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Wednesday, Sept. 21 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
+					     <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Wednesday, Sept. 28 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>');
 		    /*
 		    <div>\
 		    	<ul>\
