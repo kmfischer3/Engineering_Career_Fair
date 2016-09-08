@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../includes/css/styles.css">
+  <script src="../includes/js/constants.js" type="text/javascript"></script>
   <script src="../includes/js/history_manager.js" type="text/javascript"></script>
   <script src="../Views/data.php" type="text/javascript"></script>
   <script src="../includes/js/functions.js"></script>
