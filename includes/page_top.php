@@ -11,6 +11,7 @@
   <script src="../includes/js/history_manager.js" type="text/javascript"></script>
   <script src="../Views/data.php" type="text/javascript"></script>
   <script src="../includes/js/functions.js"></script>
+  <script src="../includes/js/search.js"></script>
   <title>ECS Job Fair 2016</title>
 </head>
 <body>
