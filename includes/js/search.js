@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 	$( "#search" ).submit(function( event ) {
 		var result = search_companies( $("#searchterm").val() );
-		$('.navbar-collapse').collapse('hide');
+		$('#navbar-collapse-1').collapse('hide');
 		view("display_companies", result);
 		event.preventDefault();
 	});
@@ -11,7 +11,7 @@ $( document ).ready(function() {
 		var degree_masks = encode_degree_input();
 		var position_mask = encode_position_input();
 		var citizenship_mask = encode_citizenship_input();
-		$('.navbar-collapse').collapse('hide');
+		$('#navbar-collapse-1').collapse('hide');
 		filter_companies(degree_masks, position_mask, citizenship_mask);
 	
 		event.preventDefault();
