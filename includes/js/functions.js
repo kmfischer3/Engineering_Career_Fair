@@ -138,18 +138,18 @@ function display_companies(company_ids) {
 
 		var a = document.createElement("a");
 		a.href = "#";
-		$(a).click(company.id, function(e) {
+		$(a).click(company_id, function(e) {
 			company_id = e.data;
 			view("load_company_profile", company_id);
 		});
 		a.className = "list-group-item";
-		
+
 		$(a).html('<h4 class="list-group-item-heading">' + company.name + '</h4>\
 			<p>' + company.description + '</p>');
 
 		div.appendChild(a);
 	});
-	
+
 	// If no results, display a message
 	if (!div.hasChildNodes()) {
 		$(div).html("<p>No results found.</p>");
