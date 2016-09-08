@@ -54,6 +54,11 @@ function display_companies(company_ids) {
 
 		div.appendChild(a);
 	});
+	
+	// If no results, display a message
+	if (!div.hasChildNodes()) {
+		$(div).html("<p>No results found.</p>");
+	}
 
 	$("#company_list").empty();
 	var content_div = document.getElementById("company_list");
