@@ -1,0 +1,19 @@
+{
+  "name": "engineering-career-fair",
+  "version": "0.2.0",
+  "description": "An app for the Engineering Career Fair",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmfischer3/Engineering_Career_Fair.git"
+  },
+  "author": "Kristina Fischer",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/kmfischer3/Engineering_Career_Fair/issues"
+  },
+  "homepage": "https://github.com/kmfischer3/Engineering_Career_Fair#readme"
+}

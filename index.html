@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../includes/css/styles.css">
     <script src="js/constants.js" type="text/javascript"></script>
     <script src="js/history_manager.js" type="text/javascript"></script>
-    <script src="php/data.php" type="text/javascript"></script>
+    <script src="static/data.js" type="text/javascript"></script>
     <script src="js/functions.js"></script>
     <script src="js/search.js"></script>
     <title>ECS Job Fair 2016</title>
@@ -19,31 +19,31 @@
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-	
+
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
-	  
+
 	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
             <span class="glyphicon glyphicon-search"></span>
 	  </button>
-	  
+
 	  <a class="navbar-brand" href="#" onclick="view('load_companies', null); return false;">Fall 2016 ECS Career Fair</a>
 
 	</div>
-	
+
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse" id="navbar-collapse-1">
 
-	  
+
 	  <form id="search" class="form-inline">
 	    <div class="form-group">
 	      <input type="text" class="form-control" placeholder="Search Companies" id="searchterm">
 	    </div>
 	    <input type="submit" class="btn btn-default">
 	  </form>
-	  
+
 	  <br><br>
-	  
+
 	  <form id="filter" class="form">
 	    <div class="row">
 	      <label for="degree_filters_1" class="col-xs-4">Degree:</label>
@@ -107,9 +107,9 @@
 		</div>
 	      </div>
 	    </div>
-	    
+
 	    <br><br>
-	    
+
 	    <div class="row">
 	      <label for="position_filters" class="col-xs-4">Position Type:</label>
 	      <div class="col-xs-8">
@@ -129,9 +129,9 @@
 		</div>
 	      </div>
 	    </div>
-	    
+
 	    <br><br>
-	    
+
 	    <div class="row">
 	      <label for="citizenship_filters" class="col-xs-4">Citizenship:</label>
 	      <div class="col-xs-8">
@@ -151,14 +151,14 @@
 	    <input type="submit" class="btn btn-default">
 	  </form>
 
-	  
-	  
+
+
 	</div><!-- /.navbar-collapse -->
-	
+
 	<button type="button" class="navbar-toggle collapsed visible-sm visible-md visible-lg" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
 	  <span class="glyphicon glyphicon-search"> Search</span>
 	</button>
-	
+
       </div><!-- /.container-fluid -->
 
     </nav>
@@ -171,18 +171,18 @@
       </div>
 
       <div class="content">
-	
+
 	<div id="company_profile_day_list" class="list-group">
 	</div>
-	
+
 	<div id="company_profile_degree_position_table">
 	</div>
-	
+
 	<div id="company_profile_citizenship">
 	</div>
-	
+
       </div>
-      
+
 
     </div>
 
