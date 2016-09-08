@@ -38,8 +38,9 @@
 
 		// Augment company data with table data
 		while ( $assignment = mysqli_fetch_assoc($table_assignments) ) {
-			if (!array_key_exists($assignment["company_id"], $results))
+			if (!array_key_exists((int)$assignment["company_id"], $response)) {
 				continue;  // Company not in results
+			}
 			if (!array_key_exists("tables", $response[$assignment["company_id"]])) {
 				$response[$assignment["company_id"]]["tables"] = [null, null, null];
 			}
