@@ -9,11 +9,17 @@
 .glyphicon-heart-empty {
 	color: #ff6666;
 }
+.jumbotron {
+	padding-left: 10px;
+	padding-right: 10px;
+}
 .popover-content {
    	height: 300px;
    	overflow-y: scroll;
 }
-
+table th {
+	text-align: center;
+}
 table td {
 	text-align: center;
 }
