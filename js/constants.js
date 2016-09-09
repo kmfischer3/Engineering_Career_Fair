@@ -7,12 +7,12 @@ var CMPE_mask = 240;		//00000000000000000000000011110000
 var CS_mask = 15;		//00000000000000000000000000001111
 
 var degree_mask_1_array = {
-	BME: BME_mask, 
-	BSE: BSE_mask, 
-	CEE: CEE_mask, 
-	CHE: CHE_mask, 
-	CMPE: CMPE_mask, 
-	CS: CS_mask
+	  BME: BME_mask, 
+	  BSE: BSE_mask, 
+	  CEE: CEE_mask, 
+	  CHE: CHE_mask, 
+	  CMPE: CMPE_mask, 
+	  CS: CS_mask
 };
 
 /* ENCODE DEGREE MASK 2 */
@@ -24,12 +24,12 @@ var GLE_mask = 240;		//00000000000000000000000011110000
 var IE_mask = 15;		//00000000000000000000000000001111
 
 var degree_mask_2_array = {
-	EE: EE_mask, 
-	EMA: EMA_mask, 
-	ENG: ENG_mask, 
-	EP: EP_mask, 
-	GLE: GLE_mask, 
-	IE: IE_mask
+	  EE: EE_mask, 
+	  EMA: EMA_mask, 
+	  ENG: ENG_mask, 
+	  EP: EP_mask, 
+	  GLE: GLE_mask, 
+	  IE: IE_mask
 };
 
 /* ENCODE DEGREE MASK 3 */
@@ -40,11 +40,11 @@ var MSE_mask = 240;		//00000000000000000000000011110000
 var NEEP_mask = 15;		//00000000000000000000000000001111
 
 var degree_mask_3_array = {
-	MatE: MatE_mask, 
-	ME: ME_mask, 
-	MS: MS_mask, 
-	MSE: MSE_mask, 
-	NEEP: NEEP_mask
+	  MatE: MatE_mask, 
+	  ME: ME_mask, 
+	  MS: MS_mask, 
+	  MSE: MSE_mask, 
+	  NEEP: NEEP_mask
 };
 
 /* ENCODE POSITION MASK */
@@ -54,10 +54,10 @@ var E_mask = 2236962;		//00000000001000100010001000100010
 var X_mask = 1118481;		//00000000000100010001000100010001
 
 var position_mask_array = {
-	I: I_mask, 
-	C: C_mask, 
-	E: E_mask, 
-	X: X_mask
+	  I: I_mask, 
+	  C: C_mask, 
+	  E: E_mask, 
+	  X: X_mask
 };
 
 /* ENCODE CITIZEN MASK */
