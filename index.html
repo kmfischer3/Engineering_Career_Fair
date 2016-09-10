@@ -193,8 +193,11 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
-          $("#map_svg").load("/static/map.svg");
           load_companies();
+      });
+
+      window.addEventListener("load", function() {
+          $("#map_svg").load("/static/map.svg");
       });
     </script>
 
