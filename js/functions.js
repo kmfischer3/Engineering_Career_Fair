@@ -13,11 +13,46 @@ function load_company_profile(company_id) {
     
     
     // create day_company_booth list with buttons to trigger the map view with the corresponding booth highlighted
-    $("#company_profile_day_list").html('<h4>Booth Locations</h4>\
-               <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Monday, Sept. 19 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
-               <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Wednesday, Sept. 21 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>\
-               <a href="#" class="list-group-item"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Wednesday, Sept. 28 <span class="glyphicon glyphicon-menu-right pull-right"></span></a>');
+    var profile_day_list = '<h4>Booth Locations</h4>';
     
+    $("#company_profile_day_list").empty();
+    if (company.tables[0] != null) {
+    	
+    	var a = $("<a/>", {
+    	    href: "#",
+    	    class: "list-group-item"})
+    	    .click(company.tables[0], function(e) {
+                view("view_map_highlight_table", e.data-590);
+    	    });
+    	a.html('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>\
+    			Monday, Sept. 19 \
+    			<span class="glyphicon glyphicon-menu-right pull-right"></span>')
+    	    .appendTo("#company_profile_day_list");
+    }
+    if (company.tables[1] != null) {
+        var a = $("<a/>", {
+    	    href: "#",
+    	    class: "list-group-item"})
+    	    .click(company.tables[0], function(e) {
+                view("view_map_highlight_table", e.data -590);
+    	    });
+    	a.html('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>\
+    			Wednesday, Sept. 21 \
+    			<span class="glyphicon glyphicon-menu-right pull-right"></span>')
+    	    .appendTo("#company_profile_day_list");
+    }   
+    if (company.tables[2] != null) {
+        var a = $("<a/>", {
+    	    href: "#",
+    	    class: "list-group-item"})
+    	    .click(company.tables[0], function(e) {
+                view("view_map_highlight_table", e.data - 590);
+    	    });
+    	a.html('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>\
+    			Wednesday, Sept. 28 \
+    			<span class="glyphicon glyphicon-menu-right pull-right"></span>')
+    	    .appendTo("#company_profile_day_list");
+    }   
     
     // construct degree-position table
     // if the company's degree_mask_# has anything other than '0000' for a given major, add that major to the table
