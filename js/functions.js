@@ -138,7 +138,7 @@ function load_company_profile(company_id) {
 }
 views["load_company_profile"] = load_company_profile;
 
-function display_companies(company_ids) {
+function display_companies_list(company_ids) {
     var div = document.createElement("div");
     div.className = "list-group";
 
@@ -169,13 +169,45 @@ function display_companies(company_ids) {
     var content_div = document.getElementById("company_list");
     content_div.appendChild(div);
 
+    $("#show_on_map_button")
+        .off()
+        .click({day: 1, // TODO: remove hardcoded day
+                company_ids: company_ids},
+                function(e) {
+                    view("display_companies_map", e.data);
+                });
+    
     $(".view").addClass('hidden');
-    $("#company_list").removeClass('hidden');
+    $("#company_list_view").removeClass('hidden');
 }
-views["display_companies"] = display_companies;
+views["display_companies_list"] = display_companies_list;
+
+/*
+ * view_options:
+ * {
+ *   day: 1,
+ *   company_ids: [1,2,3]
+ * }
+ */
+function display_companies_map(view_options) {
+
+    map.resetTables();
+
+    view_options.company_ids.forEach(function(company_id, index, array) {
+        var company = data[company_id];
+	    if (company.tables[view_options.day-1] != null) {
+	        table_id = company.tables[view_options.day-1]-590;
+	        map.highlightTable(table_id);
+	    }        
+    });
+
+    $(".view").addClass('hidden');
+    $("#map_view").removeClass('hidden');
+}
+views["display_companies_map"] = display_companies_map;
 
 function load_companies() {
-    display_companies(Object.keys(data));
+    display_companies_list(Object.keys(data));
 }
 views["load_companies"] = load_companies;
 

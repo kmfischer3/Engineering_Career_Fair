@@ -2,7 +2,7 @@ $( document ).ready(function() {
     $( "#search" ).submit(function( event ) {
         var result = search_companies( $("#searchterm").val() );
         $('#navbar-collapse-1').collapse('hide');
-        view("display_companies", result);
+        view("display_companies_list", result);
         event.preventDefault();
     });
 
@@ -189,7 +189,7 @@ function filter_companies(degree_masks, position_mask, citizenship_mask) {
         
     }
     
-    view("display_companies", results);
+    view("display_companies_list", results);
     
     console.log(results);
 
