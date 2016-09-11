@@ -1,3 +1,10 @@
+.btn-lg { /*TODO: use something other than btn-lg because we might need to use that elsewhere*/
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+    width: 33%;
+}
 .content {
 	padding-left: 10px;
 	padding-right: 10px;
