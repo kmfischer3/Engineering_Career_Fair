@@ -119,10 +119,15 @@ function load_company_profile(company_id) {
     if ((citizen_mask & VH_mask) == VH_mask) {
         citizen.push("Visa Holder");
     }
+    
+    //if the citizen array is empty at this point, that means that the company has not specified any citizenship reqs
+    if ( citizen.length > 0 ) {
+	$("#company_profile_citizenship").html('<h4>Citizenship requirements: <small> ' + citizen.join(", ") + '</small></h4>');
+    } else {
+    	$("#company_profile_citizenship").html('<h4>Citizenship requirements: <small>No info submitted</small></h4>');	
+    }
 
-    $("#company_profile_citizenship").html('<h4>Citizenship requirements: <small> ' + citizen.join(", ") + '</small></h4>');
-
-
+    
     $("#company_list").addClass('hidden');
     $("#company_profile").removeClass('hidden');
 }
