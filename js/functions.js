@@ -138,12 +138,12 @@ function load_company_profile(company_id) {
 }
 views["load_company_profile"] = load_company_profile;
 
-function display_companies_list(company_ids) {
+function display_companies_list(view_options) {
     var div = document.createElement("div");
     div.className = "list-group";
 
     var company_html = "";
-    company_ids.forEach(function(company_id, index, array) {
+    view_options.company_ids.forEach(function(company_id, index, array) {
         var company = data[company_id];
 
         var a = document.createElement("a");
@@ -171,8 +171,8 @@ function display_companies_list(company_ids) {
 
     $("#show_on_map_button")
         .off()
-        .click({day: 1, // TODO: remove hardcoded day
-                company_ids: company_ids},
+        .click({day: view_options.day,
+                company_ids: view_options.company_ids},
                 function(e) {
                     view("display_companies_map", e.data);
                 });
@@ -195,8 +195,8 @@ function display_companies_map(view_options) {
 
     view_options.company_ids.forEach(function(company_id, index, array) {
         var company = data[company_id];
-	    if (company.tables[view_options.day-1] != null) {
-	        table_id = company.tables[view_options.day-1]-590; //TODO update table numbers so you don't have to do this subtraction
+	    if (company.tables[view_options.day] != null) {
+	        table_id = company.tables[view_options.day]-590; //TODO update table numbers so you don't have to do this subtraction
 	        map.highlightTable(table_id);
 	    }        
     });
@@ -207,7 +207,14 @@ function display_companies_map(view_options) {
 views["display_companies_map"] = display_companies_map;
 
 function load_companies() {
-    display_companies_list(Object.keys(data));
+
+    var view_options = 
+    {
+        day: 1,
+        company_ids: Object.keys(data)
+    };
+
+    display_companies_list(view_options);
 }
 views["load_companies"] = load_companies;
 

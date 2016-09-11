@@ -11,9 +11,11 @@ $( document ).ready(function() {
         var degree_masks = encode_degree_input();
         var position_mask = encode_position_input();
         var citizenship_mask = encode_citizenship_input();
+        var day = get_day_input();
         $('#navbar-collapse-1').collapse('hide');
-        filter_companies(degree_masks, position_mask, citizenship_mask);
-        
+        var view_options = filter_companies(degree_masks, position_mask, citizenship_mask, day);
+        //display_companies_map(view_options);
+        view("display_companies_list", view_options);
         event.preventDefault();
     });
 });
@@ -148,7 +150,7 @@ function encode_citizenship_input() {
     
 }
 
-function filter_companies(degree_masks, position_mask, citizenship_mask) {
+function filter_companies(degree_masks, position_mask, citizenship_mask, day_input) {
 
     if (citizenship_mask == 0) {
         citizenship_mask = -1;
@@ -157,13 +159,11 @@ function filter_companies(degree_masks, position_mask, citizenship_mask) {
     if (position_mask == 0) {
         position_mask = -1;
     }
-    /* TODO
-     if ( (degree_masks[0] == 0) && (degree_masks[1] == 0) && (degree_masks[2] == 0) ) {
-     degree_masks[0] == -1;
-     degree_masks[1] == -1;
-     degree_masks[2] == -1;
-     }
-     */
+    if ( (degree_masks[0] == 0) && (degree_masks[1] == 0) && (degree_masks[2] == 0) ) {
+        degree_masks[0] == -1;
+        degree_masks[1] == -1;
+        degree_masks[2] == -1;
+    }
 
     for (i=0; i<degree_masks.length; i++) {
         console.log(degree_masks[i]);
@@ -183,16 +183,40 @@ function filter_companies(degree_masks, position_mask, citizenship_mask) {
         if ( (company.citizen_mask & citizenship_mask) != 0 &&
              ((company.degree_mask_1 & degree_mask_1) != 0 ||
               (company.degree_mask_2 & degree_mask_2) != 0 ||
-              (company.degree_mask_3 & degree_mask_3) != 0)) {
+              (company.degree_mask_3 & degree_mask_3) != 0) && company.tables[day_input] != null ) {
             results.push(company_id);
         }
         
     }
     
-    view("display_companies_list", results);
+    //view("display_companies_list", results);
     
+    var view_options = 
+        {
+            day: day_input,
+            company_ids: results
+        };
+        
+    return view_options;
+
     console.log(results);
 
+}
+
+function get_day_input() {
+    
+    if ( document.getElementById("day0").checked ) {
+        return 0;
+    }  
+    if ( document.getElementById("day1").checked ) {
+        return 1;
+    }
+    if ( document.getElementById("day2").checked ) {
+        return 2;
+    }
+    
+    return -1;
+    
 }
 
 /*
