@@ -3,7 +3,6 @@ var concat = require('gulp-concat');
 var browserSync = require('browser-sync');
 var jshint = require('gulp-jshint');
 var svgmin = require('gulp-svgmin');
-var merge = require('merge-stream');
 var reload = browserSync.reload;
 
 var JS_BLOB = 'js/*.js';
