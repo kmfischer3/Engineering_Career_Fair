@@ -157,7 +157,7 @@ function filter_companies(degree_masks, position_mask, citizenship_mask) {
     if (position_mask == 0) {
         position_mask = -1;
     }
-    /*
+    /* TODO
      if ( (degree_masks[0] == 0) && (degree_masks[1] == 0) && (degree_masks[2] == 0) ) {
      degree_masks[0] == -1;
      degree_masks[1] == -1;

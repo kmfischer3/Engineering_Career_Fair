@@ -196,7 +196,7 @@ function display_companies_map(view_options) {
     view_options.company_ids.forEach(function(company_id, index, array) {
         var company = data[company_id];
 	    if (company.tables[view_options.day-1] != null) {
-	        table_id = company.tables[view_options.day-1]-590;
+	        table_id = company.tables[view_options.day-1]-590; //TODO update table numbers so you don't have to do this subtraction
 	        map.highlightTable(table_id);
 	    }        
     });
