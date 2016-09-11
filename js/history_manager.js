@@ -1,9 +1,4 @@
 /*
- * Store the name to function mapping for all views.
- */
-var views = {};
-
-/*
  * Change the view. This function will also add data to the browser's
  * history stack allowing the back button to function.
  */
@@ -21,7 +16,7 @@ function view(view_name, data) {
 window.onpopstate = function(event) {
     console.log(event);
     views[event.state.view](event.state.data);
-}
+};
 
 /*
  * Set the initial view to be the company display.

@@ -1,3 +1,9 @@
+/*
+ * Store the name to function mapping for all views. 
+ */
+var views = {};
+
+
 function load_company_profile(company_id) {
 
     company = data[company_id];
