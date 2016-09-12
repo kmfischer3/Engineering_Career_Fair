@@ -9,6 +9,7 @@ function view(view_name, data) {
     history.pushState(history_state, "");
 
     views[view_name](data);
+    $(window).scrollTop(0);
 }
 
 /*
