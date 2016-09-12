@@ -64,3 +64,5 @@ var position_mask_array = {
 var US_mask = 4;  //100
 var PR_mask = 2;  //010
 var VH_mask = 1;  //001
+
+var DEFAULT_DAY_ID = 0;
