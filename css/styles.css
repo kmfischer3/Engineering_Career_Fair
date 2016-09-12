@@ -5,6 +5,10 @@
     border-radius: 6px;
     width: 33%;
 }
+.btn-block {
+    border-radius: 0;
+    margin-bottom: 20px;
+}
 .content {
 	padding-left: 10px;
 	padding-right: 10px;
@@ -32,3 +36,4 @@ table th {
 table td {
 	text-align: center;
 }
+

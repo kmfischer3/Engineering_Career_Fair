@@ -47,8 +47,8 @@
 
       <h4><small>Filters</small></h4>
       <form id="filter" class="form">
-
-        <br><br>
+      
+        <br>
 
         <div class="form-group btn-group btn-block" data-toggle="buttons">
           <label class="btn btn-lg btn-default active">
@@ -187,14 +187,9 @@
       <div class="page-header">
         <h4 id="company_list_view_header"></h4>
       </div>
-
+      
+      <a type="button" id="show_on_map_button" class="btn btn-block btn-info" href="#">View on Map <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
       <div id="company_list"> </div>
-       <nav class="navbar navbar-fixed-bottom">
-        <div class="container">
-          <a type="button" id="show_on_map_button" class="btn btn-md btn-info pull-right" href="#">View Results on Map <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-        </div>
-       </nav>
-       <br><br>
 
     </div>
 
@@ -205,6 +200,7 @@
 
       <div class="content">
 
+	<h4>Find Table</h4>
         <div id="company_profile_day_list" class="list-group">
         </div>
 
@@ -213,7 +209,13 @@
 
         <div id="company_profile_citizenship">
         </div>
-
+        
+        <div id="company_profile_description" class="well">
+          <h4></h4>
+          <p></p>
+          <a id="company_profile_website" href="#">Website</a>
+        </div>
+        
       </div>
 
     </div>

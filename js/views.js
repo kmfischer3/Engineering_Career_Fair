@@ -6,8 +6,6 @@ var views = {
         $("#company_profile_name").html('<h1>' + company.name + '</h1>');
 
         // create day_company_booth list with buttons to trigger the map view with the corresponding booth highlighted
-        var profile_day_list = '<h4>Booth Locations</h4>';
-
         function create_link(table_id, day_text) {
             return $("<a/>", {
                 href: "#",
@@ -108,7 +106,6 @@ var views = {
 
         // insert the table body into the rest of the table html
         var table_data = '\
-          <h3>Postion</h3>\
           <table class="table">\
             <thead>\
               <tr>\
@@ -147,10 +144,11 @@ var views = {
 
 
         // display the company description
-        //$("#company_profile_description").html('<h1>' + company.name + '</h1>');
-
+        $("#company_profile_description > h4").text("More about " + company.name);
+        $("#company_profile_description > p").text(company.description);
+        
         // display the company website
-        //$("#company_profile_website").html('<h1>' + company.name + '</h1>');
+        $("#company_profile_website").href = company.website;
 
         $(".view").addClass('hidden');
         $("#company_profile").removeClass('hidden');
