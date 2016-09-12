@@ -40,8 +40,8 @@ function encode_degree_input() {
     if ( filters.elements["CMPE_input"].checked )
         degree_mask_1 |= CMPE_mask;
     if ( filters.elements["CS_input"].checked )
-        degree_mask_1 |= CS_mask;    
-    
+        degree_mask_1 |= CS_mask;
+
     // Encode the degrees in the second mask
     if ( filters.elements["EE_input"].checked )
         degree_mask_2 |= EE_mask;
@@ -55,7 +55,7 @@ function encode_degree_input() {
         degree_mask_2 |= GLE_mask;
     if ( filters.elements["IE_input"].checked )
         degree_mask_2 |= IE_mask;
-    
+
     // Encode the degrees in the third mask
     if ( filters.elements["MatE_input"].checked )
         degree_mask_3 |= MatE_mask;
@@ -71,7 +71,7 @@ function encode_degree_input() {
     // If no degrees selected, match all results
     if (degree_mask_1 === 0 && degree_mask_2 === 0 && degree_mask_3 === 0)
         return [-1, -1, -1];
-    
+
     return [degree_mask_1, degree_mask_2, degree_mask_3];
 
 }
@@ -80,7 +80,7 @@ function encode_position_input() {
 
     var filters = document.getElementById("filter");
     var position_mask = 0;    // I,C,E,X
-    
+
     // Set mask with selected filters
     if ( filters.elements["I_input"].checked )
         position_mask |= I_mask;
@@ -90,13 +90,13 @@ function encode_position_input() {
         position_mask |= E_mask;
     if ( filters.elements["X_input"].checked )
         position_mask |= X_mask;
-    
+
     // If no filters selected, match all results
     if ( position_mask === 0 )
         return -1;
-    
+
     return position_mask;
-    
+
 }
 function encode_citizenship_input() {
 
@@ -114,9 +114,9 @@ function encode_citizenship_input() {
     // If no filters selected, match all results
     if ( citizenship_mask === 0 )
         return -1;
-    
+
     return citizenship_mask;
-    
+
 }
 
 function filter_companies(degree_masks, position_mask, citizenship_mask, day_input) {
@@ -131,7 +131,7 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
     var degree_mask_1 = ( degree_masks[0] & position_mask );
     var degree_mask_2 = ( degree_masks[1] & position_mask );
     var degree_mask_3 = ( degree_masks[2] & position_mask );
-    
+
     // Find matching results
     results = [];
     for (var company_id in data) {
@@ -145,30 +145,30 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
                  results.push(company_id);
              }
     }
-    
-    var view_options = 
+
+    var view_options =
         {
             day: day_input,
             company_ids: results
         };
-        
+
     return view_options;
 }
 
 function get_day_input() {
-    
+
     if ( document.getElementById("day0").checked ) {
         return 0;
-    }  
+    }
     if ( document.getElementById("day1").checked ) {
         return 1;
     }
     if ( document.getElementById("day2").checked ) {
         return 2;
     }
-    
+
     return -1;
-    
+
 }
 
 /*
@@ -179,7 +179,7 @@ function get_day_input() {
 function search_companies(keywords) {
     keywords = keywords.toLowerCase();
     terms = keywords.split(" ");
-    
+
     results = [];
     terms.forEach(function(term, index, array) {
         for (var company_id in data) {
@@ -191,6 +191,6 @@ function search_companies(keywords) {
             }
         }
     });
-    
+
     return results;
 }
