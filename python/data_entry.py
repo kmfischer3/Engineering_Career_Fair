@@ -11,8 +11,8 @@ DEGREE_MASKS = {
     'cmpe': 240,      #00000000000000000000000011110000
     'cs': 15,         #00000000000000000000000000001111
 
-    'ee':  15728640,   #00000000111100000000000000000000
-    'ema':  983040,    #00000000000011110000000000000000
+    'ee':  15728640,  #00000000111100000000000000000000
+    'ema':  983040,   #00000000000011110000000000000000
     'eng': 61440,     #00000000000000001111000000000000
     'ep': 3840,       #00000000000000000000111100000000
     'gle': 240,       #00000000000000000000000011110000
@@ -97,12 +97,17 @@ class Main():
     def __init__(self, starting_company_id=0, day_number=1):
         self.company_id=0
 
+        self.outfile = open('out.sql', 'a+')
+
     def start(self):
         companies = []
 
         try:
             while True:
-                companies.append(self.enter_company_details())
+                company = self.enter_company_details()
+                companies.append(company)
+                self.outfile.write(company.generate_sql())
+                print('---------')
         except KeyboardInterrupt:
             pass
 
