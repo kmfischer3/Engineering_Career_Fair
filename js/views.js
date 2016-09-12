@@ -6,20 +6,31 @@ var views = {
         $("#company_profile_name").html('<h1>' + company.name + '</h1>');
 
         // create day_company_booth list with buttons to trigger the map view with the corresponding booth highlighted
-        function create_link(table_id, day_text) {
+        function create_link(table_id, day) {
             return $("<a/>", {
                 href: "#",
                 class: "list-group-item"})
-                .click(table_id, function(e) {
-                    view("view_map_highlight_table", e.data);
-                    e.preventDefault();
-                })
+                .click(
+                    {
+                        table_id: table_id,
+                        day: day
+                    },
+                    function(e) {
+                        view("view_map_highlight_table", e.data);
+                        e.preventDefault();
+                    })
                 .html('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>' +
-                      day_text +
+                      get_day_string(day) +
                       '<span class="glyphicon glyphicon-menu-right pull-right"></span>');
         }
 
         $("#company_profile_day_list").empty();
+        for (var day = 0; day < 3; day++) {
+            if (company.tables[day] != null)
+                create_link(company.tables[day], day)
+                .appendTo("#company_profile_day_list");
+        }
+        /*
         if (company.tables[0] != null) {
             create_link(company.tables[0], "Monday, Sept. 19th")
                 .appendTo("#company_profile_day_list");
@@ -32,6 +43,7 @@ var views = {
             create_link(company.tables[0], "Wednesday, Sept. 28th")
                 .appendTo("#company_profile_day_list");
         }
+         */
 
         // construct degree-position table
         // if the company's degree_mask_# has anything other than '0000' for a given major, add that major to the table
@@ -243,9 +255,16 @@ var views = {
         views.display_companies_list(view_options);
     },
 
-    view_map_highlight_table: function(table_id) {
+    /*
+     * options = {
+     *   table_id: 1,
+     *   day: 1
+     * }
+     */
+    view_map_highlight_table: function(options) {
         map.resetTables();
-        map.highlightTable(table_id);
+        map.highlightTable(options.table_id);
+        $("#map_view_title").text(get_day_string(options.day));
 
         $(".view").addClass("hidden");
         $("#map_view").removeClass("hidden");
