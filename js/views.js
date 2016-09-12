@@ -148,7 +148,7 @@ var views = {
 
         // display the company description
         //$("#company_profile_description").html('<h1>' + company.name + '</h1>');
-        
+
         // display the company website
         //$("#company_profile_website").html('<h1>' + company.name + '</h1>');
 
@@ -159,7 +159,8 @@ var views = {
     /*
      * view_options: {
      *   day: 1,
-     *   company_ids: [1,2,3]
+     *   company_ids: [1,2,3],
+     *   search: false
      * }
      */
     display_companies_list: function(view_options) {
@@ -188,19 +189,31 @@ var views = {
         // Add the results to the DOM
         $("#company_list").empty().append(div);
 
-        // Set up the "show on map" button
-        $("#show_on_map_button")
-            .off()
-            .click({
-                day: view_options.day,
-                company_ids: view_options.company_ids
-            }, function(e) {
-                view("display_companies_map", e.data);
-            });
+        // Add the "show on map" button when results are tied to a day
+        if ("day" in view_options) {
+            $("#show_on_map_button")
+                .off()
+                .click({
+                    day: view_options.day,
+                    company_ids: view_options.company_ids
+                }, function(e) {
+                    view("display_companies_map", e.data);
+                })
+                .show();
+        } else {
+          $("#show_on_map_button").hide();
+        }
 
+        // Add a heading to the view
+        if ("day" in view_options) {
+            $("#company_list_view_header").text(get_day_string(view_options.day));
+        } else if ("search" in view_options && view_options.search) {
+            $("#company_list_view_header").text("Search");
+        }
+
+        // Display the view
         $(".view").addClass("hidden");
         $("#company_list_view").removeClass("hidden");
-        $("#day_name_list").html('<h4>' + get_day_string(view_options.day) + '</h4>');
     },
 
     /*

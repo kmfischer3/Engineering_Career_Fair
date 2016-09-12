@@ -2,7 +2,7 @@ $( document ).ready(function() {
     $( "#search" ).submit(function( event ) {
         var result = search_companies( $("#searchterm").val() );
         $('#navbar-collapse-1').collapse('hide');
-        view("display_companies_list", result);
+        view("display_companies_list", {company_ids: result, search: true});
         event.preventDefault();
     });
 
