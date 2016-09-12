@@ -4,8 +4,6 @@
  */
 function view(view_name, data) {
     history_state = {view: view_name, data: data};
-    console.log("pushing history state:");
-    console.log(history_state);
     history.pushState(history_state, "");
 
     views[view_name](data);
@@ -19,7 +17,6 @@ function view(view_name, data) {
 window.addEventListener("popstate", function(event) {
     console.log(event);
     if (event.state === null) {
-        console.log("popstate received a null state object");
         return;
     }
     views[event.state.view](event.state.data);
