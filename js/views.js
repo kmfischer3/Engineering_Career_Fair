@@ -12,6 +12,7 @@ var views = {
                 class: "list-group-item"})
                 .click(table_id, function(e) {
                     view("view_map_highlight_table", e.data);
+                    e.preventDefault();
                 })
                 .html('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>' +
                       day_text +
@@ -146,7 +147,7 @@ var views = {
         // display the company description
         $("#company_profile_description > h4").text("More about " + company.name);
         $("#company_profile_description > p").text(company.description);
-        
+
         // display the company website
         $("#company_profile_website").href = company.website;
 
@@ -175,6 +176,7 @@ var views = {
             }).click(company_id, function(e) {
                 company_id = e.data;
                 view("load_company_profile", company_id);
+                e.preventDefault();
             }).html('<h4 class="list-group-item-heading">' + company.name + '</h4>' +
                     '<p>' + company.description + '</p>')
                     .appendTo(div);
@@ -196,6 +198,7 @@ var views = {
                     company_ids: view_options.company_ids
                 }, function(e) {
                     view("display_companies_map", e.data);
+                    e.preventDefault();
                 })
                 .show();
         } else {
