@@ -3,7 +3,7 @@ var views = {
         company = data[company_id];
 
         // display the company name in the jumbotron div
-        $("#company_profile_name").html('<h1>' + company.name + '</h1>');
+        $("#company_profile_name").text(company.name);
 
         // create day_company_booth list with buttons to trigger the map view with the corresponding booth highlighted
         function create_link(table_id, day) {
@@ -26,24 +26,11 @@ var views = {
 
         $("#company_profile_day_list").empty();
         for (var day = 0; day < 3; day++) {
-            if (company.tables[day] != null)
+            if (company.tables[day] != null) {
                 create_link(company.tables[day], day)
-                .appendTo("#company_profile_day_list");
+                    .appendTo("#company_profile_day_list");
+            }
         }
-        /*
-        if (company.tables[0] != null) {
-            create_link(company.tables[0], "Monday, Sept. 19th")
-                .appendTo("#company_profile_day_list");
-        }
-        if (company.tables[1] != null) {
-            create_link(company.tables[0], "Wednesday, Sept. 21st")
-                .appendTo("#company_profile_day_list");
-        }
-        if (company.tables[2] != null) {
-            create_link(company.tables[0], "Wednesday, Sept. 28th")
-                .appendTo("#company_profile_day_list");
-        }
-         */
 
         // construct degree-position table
         // if the company's degree_mask_# has anything other than '0000' for a given major, add that major to the table
