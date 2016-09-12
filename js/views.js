@@ -145,6 +145,13 @@ var views = {
             $("#company_profile_citizenship").html('<h4>Citizenship requirements: <small>No info submitted</small></h4>');
         }
 
+
+        // display the company description
+        //$("#company_profile_description").html('<h1>' + company.name + '</h1>');
+        
+        // display the company website
+        //$("#company_profile_website").html('<h1>' + company.name + '</h1>');
+
         $(".view").addClass('hidden');
         $("#company_profile").removeClass('hidden');
     },
@@ -193,6 +200,7 @@ var views = {
 
         $(".view").addClass("hidden");
         $("#company_list_view").removeClass("hidden");
+        $("#day_name_list").html('<h4>' + get_day_string(view_options.day) + '</h4>');
     },
 
     /*
@@ -214,11 +222,12 @@ var views = {
 
         $(".view").addClass("hidden");
         $("#map_view").removeClass("hidden");
+        $("#day_name_map").html('<h4>' + get_day_string(view_options.day) + '</h4>');
     },
 
     load_companies: function() {
         var view_options = {
-            day: 1,
+            day: 0,
             company_ids: Object.keys(data)
         };
         views.display_companies_list(view_options);

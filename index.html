@@ -24,7 +24,7 @@
             <span class="glyphicon glyphicon-search"></span>
       </button>
 
-      <a class="navbar-brand" href="#" onclick="view('load_companies', null); return false;">Fall 2016 ECS Career Fair</a>
+      <a class="navbar-brand" href="#" onclick="view('display_companies_list', filter_companies([-1,-1,-1], -1, -1, DEFAULT_DAY_ID)); return false;">Fall 2016 ECS Career Fair</a>
 
     </div>
 
@@ -184,6 +184,8 @@
 
     <div id="company_list_view" class="content view">
     
+      <div id="day_name_list" class="page-header"></div>
+      
       <div id="company_list"> </div>
        <nav class="navbar navbar-fixed-bottom">
         <div class="container">
@@ -215,6 +217,7 @@
     </div>
 
     <div id="map_view" class="hidden view">
+      <div id="day_name_map" class="page-header"></div>
       <div id="map_svg"></div>
     </div>
 

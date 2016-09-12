@@ -22,7 +22,8 @@ window.onpopstate = function(event) {
  * Set the initial view to be the company display.
  */
 window.addEventListener("load", function() {
-    history_state = {view: "load_companies", data: null};
+    var view_options = filter_companies([-1,-1,-1], -1, -1, DEFAULT_DAY_ID);
+    history_state = {view: "display_companies_list", data: view_options};
     history.replaceState(history_state, "", "#");
 });
 

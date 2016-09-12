@@ -19,6 +19,9 @@
 	padding-left: 10px;
 	padding-right: 10px;
 }
+.page-header {
+	padding-left: 10px;
+}
 .popover-content {
    	height: 300px;
    	overflow-y: scroll;
