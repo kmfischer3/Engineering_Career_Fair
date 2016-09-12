@@ -225,18 +225,14 @@ var views = {
      */
     display_companies_map: function(view_options) {
         map.resetTables();
-
-        view_options.company_ids.forEach(function(company_id, index, array) {
-            var company = data[company_id];
-            if (company.tables[view_options.day] != null) {
-                var table_id = company.tables[view_options.day];
-                map.highlightTable(table_id);
-            }
+        map.highlightCompanies({
+            company_ids: view_options.company_ids,
+            day: view_options.day
         });
+        $("#map_view_title").text(get_day_string(view_options.day));
 
         $(".view").addClass("hidden");
         $("#map_view").removeClass("hidden");
-        $("#day_name_map").html('<h4>' + get_day_string(view_options.day) + '</h4>');
     },
 
     load_companies: function() {
