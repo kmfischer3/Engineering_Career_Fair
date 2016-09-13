@@ -210,8 +210,12 @@ var views = {
         $("#company_profile_description > h4").text("More about " + company.name);
         $("#company_profile_description > p").text(company.description);
 
-        // display the company website
-        $("#company_profile_website").href = company.website;
+        // display the company website. If the company has not provided a website, then hide the website div
+        if ( company.website != null ) {
+            $( "#company_profile_website" ).attr('href', company.website).show();
+        } else {
+            $( "#company_profile_website" ).hide();
+        }
 
         $(".view").addClass('hidden');
         $("#company_profile").removeClass('hidden');
