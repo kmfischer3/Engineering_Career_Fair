@@ -5,7 +5,8 @@
 function view(view_name, data) {
     history_state = {view: view_name, data: data};
     history.pushState(history_state, "");
-
+    
+    $('#navbar-collapse-1').collapse('hide');
     views[view_name](data);
     $(window).scrollTop(0);
 }
