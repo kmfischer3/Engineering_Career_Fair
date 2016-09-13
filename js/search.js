@@ -24,55 +24,98 @@ function encode_degree_input() {
 
     var filters = document.getElementById("filter");
 
-    var degree_mask_1 = 0;    // BME  -> CS
-    var degree_mask_2 = 0;    // EE   -> IE
-    var degree_mask_3 = 0;    // MatE -> NEEP
+    var degree_mask_1 = 0;
+    var degree_mask_2 = 0;
+    var degree_mask_3 = 0;
+    var degree_mask_4 = 0;
+    var degree_mask_5 = 0;
+    var degree_mask_6 = 0;
 
     // Encode the degrees in the first mask
+    if ( filters.elements["AMEP_input"].checked )
+        degree_mask_1 |= AMEP_mask;
+    if ( filters.elements["AOS_input"].checked )
+        degree_mask_1 |= AOS_mask;
+    if ( filters.elements["ASPHYS_input"].checked )
+        degree_mask_1 |= ASPHYS_mask;
+    if ( filters.elements["BIOCHEM_input"].checked )
+        degree_mask_1 |= BIOCHEM_mask;
     if ( filters.elements["BME_input"].checked )
         degree_mask_1 |= BME_mask;
     if ( filters.elements["BSE_input"].checked )
         degree_mask_1 |= BSE_mask;
-    if ( filters.elements["CEE_input"].checked )
-        degree_mask_1 |= CEE_mask;
-    if ( filters.elements["CHE_input"].checked )
-        degree_mask_1 |= CHE_mask;
-    if ( filters.elements["CMPE_input"].checked )
-        degree_mask_1 |= CMPE_mask;
-    if ( filters.elements["CS_input"].checked )
-        degree_mask_1 |= CS_mask;
 
     // Encode the degrees in the second mask
-    if ( filters.elements["EE_input"].checked )
-        degree_mask_2 |= EE_mask;
-    if ( filters.elements["EMA_input"].checked )
-        degree_mask_2 |= EMA_mask;
-    if ( filters.elements["ENG_input"].checked )
-        degree_mask_2 |= ENG_mask;
-    if ( filters.elements["EP_input"].checked )
-        degree_mask_2 |= EP_mask;
-    if ( filters.elements["GLE_input"].checked )
-        degree_mask_2 |= GLE_mask;
-    if ( filters.elements["IE_input"].checked )
-        degree_mask_2 |= IE_mask;
+    if ( filters.elements["CEE_input"].checked )
+        degree_mask_2 |= CEE_mask;
+    if ( filters.elements["CHE_input"].checked )
+        degree_mask_2 |= CHE_mask;
+    if ( filters.elements["CHEM_input"].checked )
+        degree_mask_2 |= CHEM_mask;
+    if ( filters.elements["CMPE_input"].checked )
+        degree_mask_2 |= CMPE_mask;
+    if ( filters.elements["CS_input"].checked )
+        degree_mask_2 |= CS_mask;
+    if ( filters.elements["ECT_input"].checked )
+        degree_mask_2 |= ECT_mask;
 
     // Encode the degrees in the third mask
+    if ( filters.elements["EE_input"].checked )
+        degree_mask_3 |= EE_mask;
+    if ( filters.elements["EMA_input"].checked )
+        degree_mask_3 |= EMA_mask;
+    if ( filters.elements["ENG_input"].checked )
+        degree_mask_3 |= ENG_mask;
+    if ( filters.elements["ENVSCI_input"].checked )
+        degree_mask_3 |= ENVSCI_mask;
+    if ( filters.elements["EP_input"].checked )
+        degree_mask_3 |= EP_mask;
+        
+    // Encode the degrees in the fourth mask
+    if ( filters.elements["FOODSCI_input"].checked )
+        degree_mask_4 |= FOODSCI_mask;
+    if ( filters.elements["GEO_input"].checked )
+        degree_mask_4 |= GEO_mask;
+    if ( filters.elements["GLE_input"].checked )
+        degree_mask_4 |= GLE_mask;
+    if ( filters.elements["IE_input"].checked )
+        degree_mask_4 |= IE_mask;
+    if ( filters.elements["LMS_input"].checked )
+        degree_mask_4 |= LMS_mask;
     if ( filters.elements["MatE_input"].checked )
-        degree_mask_3 |= MatE_mask;
+        degree_mask_4 |= MatE_mask;
+
+    // Encode the degrees in the fifth mask
+    if ( filters.elements["MATH_input"].checked )
+        degree_mask_5 |= MATH_mask;
     if ( filters.elements["ME_input"].checked )
-        degree_mask_3 |= ME_mask;
+        degree_mask_5 |= ME_mask;
+    if ( filters.elements["MPHY_input"].checked )
+        degree_mask_5 |= MPHY_mask;
     if ( filters.elements["MS_input"].checked )
-        degree_mask_3 |= MS_mask;
+        degree_mask_5 |= MS_mask;
     if ( filters.elements["MSE_input"].checked )
-        degree_mask_3 |= MSE_mask;
+        degree_mask_5 |= MSE_mask;
     if ( filters.elements["NEEP_input"].checked )
-        degree_mask_3 |= NEEP_mask;
+        degree_mask_5 |= NEEP_mask;
+
+    // Encode the degrees in the sixth mask
+    if ( filters.elements["OTM_input"].checked )
+        degree_mask_6 |= OTM_mask;
+    if ( filters.elements["PHM_input"].checked )
+        degree_mask_6 |= PHM_mask;
+    if ( filters.elements["PHY_input"].checked )
+        degree_mask_6 |= PHY_mask;
+    if ( filters.elements["STAT_input"].checked )
+        degree_mask_6 |= STAT_mask;
+    if ( filters.elements["TOX_input"].checked )
+        degree_mask_6 |= TOX_mask;
 
     // If no degrees selected, match all results
-    if (degree_mask_1 === 0 && degree_mask_2 === 0 && degree_mask_3 === 0)
-        return [-1, -1, -1];
+    if (degree_mask_1 === 0 && degree_mask_2 === 0 && degree_mask_3 === 0 && degree_mask_4 === 0 && degree_mask_5 === 0 && degree_mask_6 === 0)
+        return [-1, -1, -1, -1, -1, -1];
 
-    return [degree_mask_1, degree_mask_2, degree_mask_3];
+    return [degree_mask_1, degree_mask_2, degree_mask_3, degree_mask_4, degree_mask_5, degree_mask_6];
 
 }
 
@@ -131,6 +174,9 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
     var degree_mask_1 = ( degree_masks[0] & position_mask );
     var degree_mask_2 = ( degree_masks[1] & position_mask );
     var degree_mask_3 = ( degree_masks[2] & position_mask );
+    var degree_mask_4 = ( degree_masks[3] & position_mask );
+    var degree_mask_5 = ( degree_masks[4] & position_mask );
+    var degree_mask_6 = ( degree_masks[5] & position_mask );
 
     // Find matching results
     results = [];
@@ -140,7 +186,10 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
         if ( (company.citizen_mask & citizenship_mask) != 0 &&
              ((company.degree_mask_1 & degree_mask_1) != 0 ||
               (company.degree_mask_2 & degree_mask_2) != 0 ||
-              (company.degree_mask_3 & degree_mask_3) != 0) &&
+              (company.degree_mask_3 & degree_mask_3) != 0 ||
+              (company.degree_mask_4 & degree_mask_4) != 0 ||
+              (company.degree_mask_5 & degree_mask_5) != 0 ||
+              (company.degree_mask_6 & degree_mask_6) != 0) &&
              company.tables[day_input] != null ) {
                  results.push(company_id);
              }

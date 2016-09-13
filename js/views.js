@@ -100,6 +100,69 @@ var views = {
                 table_body += '</tr>';
             }
         }
+        
+        /* POPULATE DEGREE MASK 4 ROWS*/
+        for (var d_key in degree_mask_4_array) {
+
+            if ( ( company.degree_mask_4 & degree_mask_4_array[d_key] ) != 0 ) {
+
+                table_body += '<tr><th scope="row">' + d_key + '</th>';
+
+                for (var p_key in position_mask_array) {
+
+                    if ( ( company.degree_mask_4 & degree_mask_4_array[d_key] & position_mask_array[p_key] ) != 0 ) {
+                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
+                    } else {
+                        table_body += '<td></td>';
+                    }
+
+                }
+
+                table_body += '</tr>';
+            }
+        }
+        
+        /* POPULATE DEGREE MASK 5 ROWS*/
+        for (var d_key in degree_mask_5_array) {
+
+            if ( ( company.degree_mask_5 & degree_mask_5_array[d_key] ) != 0 ) {
+
+                table_body += '<tr><th scope="row">' + d_key + '</th>';
+
+                for (var p_key in position_mask_array) {
+
+                    if ( ( company.degree_mask_5 & degree_mask_5_array[d_key] & position_mask_array[p_key] ) != 0 ) {
+                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
+                    } else {
+                        table_body += '<td></td>';
+                    }
+
+                }
+
+                table_body += '</tr>';
+            }
+        }
+        
+        /* POPULATE DEGREE MASK 6 ROWS*/
+        for (var d_key in degree_mask_6_array) {
+
+            if ( ( company.degree_mask_6 & degree_mask_6_array[d_key] ) != 0 ) {
+
+                table_body += '<tr><th scope="row">' + d_key + '</th>';
+
+                for (var p_key in position_mask_array) {
+
+                    if ( ( company.degree_mask_6 & degree_mask_6_array[d_key] & position_mask_array[p_key] ) != 0 ) {
+                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
+                    } else {
+                        table_body += '<td></td>';
+                    }
+
+                }
+
+                table_body += '</tr>';
+            }
+        }
 
         table_body += '</tbody>';
 
