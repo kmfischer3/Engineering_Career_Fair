@@ -274,6 +274,17 @@ var views = {
         // Add a heading to the view
         if ("day" in view_options) {
             $("#company_list_view_header").text(get_day_string(view_options.day));
+            
+            // Add the filters string to the header view, if filters (excluding day) have been selected
+            var filter_string = get_filter_string();
+            if ( filter_string != null ) {
+            	$("#company_list_view_header_filter_list").html("<small>Filters: " + filter_string + "</small>");
+            	$("#company_list_view_header_filter_list").show();
+            } else {
+            	$("#company_list_view_header_filter_list").hide();
+            }
+            
+            
         } else if ("search" in view_options && view_options.search) {
             $("#company_list_view_header").text("Search");
         }
