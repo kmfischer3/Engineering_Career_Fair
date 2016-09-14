@@ -9,6 +9,9 @@
     border-radius: 0;
     margin-bottom: 20px;
 }
+.btn-block > .btn {
+    padding: 2px;
+}
 .content {
 	padding-left: 10px;
 	padding-right: 10px;
