@@ -19,17 +19,19 @@
 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-            <span class="glyphicon glyphicon-search"></span>
-      </button>
-
-      <a class="navbar-brand" href="#" onclick="view('display_companies_list', filter_companies([-1,-1,-1], -1, -1, DEFAULT_DAY_ID)); return false;">Fall 2016 ECS Career Fair</a>
-
+    	<a class="navbar-brand" href="#" onclick="view('display_companies_list', filter_companies([-1,-1,-1,-1,-1,-1], -1, -1, DEFAULT_DAY_ID)); return false;">Fall 2016 ECS Career Fair</a>
+    	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+        	<span class="glyphicon glyphicon-search"></span>
+    	</button>
     </div>
 
+<button type="button" class="navbar-toggle collapsed pull-navbar-right visible-sm visible-md visible-lg" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				    <span class="glyphicon glyphicon-search"> Search</span>
+		  		</button>
+
+
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse" id="navbar-collapse-1">
+    <div class="collapse" id="navbar-collapse-1" style="clear:both;">
 
       <hr>
       <h4><small>Search</small></h4>
@@ -39,7 +41,7 @@
         <div class="form-group">
           <input type="search" class="form-control" placeholder="Company Name" id="searchterm">
         </div>
-        <input type="submit" class="btn btn-default pull-right">
+        <input type="submit" value="Submit" class="btn btn-default pull-right">
         <br>
 
       </form>
@@ -64,119 +66,130 @@
 
         <br><br>
 
-        <div class="row">
-          <label for="degree_filters_1" class="col-xs-4">Degree:</label>
-          <div class="col-xs-4">
-        <div class="form-group">
-          <div class="checkbox">
-            <label><input type="checkbox" id="AMEP_input">AMEP</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="AOS_input">AOS</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="ASPHYS_input">ASPHYS</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="BIOCHEM_input">BIOCHEM</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="BME_input">BME</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="BSE_input">BSE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="CEE_input">CEE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="CHE_input">CHE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="CHEM_input">CHEM</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="CMPE_input">CMPE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="CS_input">CS</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="ECT_input">ECT</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="EE_input">EE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="EMA_input">EMA</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="ENG_input">ENG</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="ENVSCI_input">ENVSCI</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="EP_input">EP</label>
-          </div>
+
+        <label for="degree_filters_1">Degree:</label>
+          
+        <div class="row"> 
+		<div class="col-xs-4">
+		    <div class="form-group">
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="AMEP_input">AMEP</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="AOS_input">AOS</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="ASPHYS_input"><small>ASPHYS</small></label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="BIOCHEM_input"><small>BIOCHEM</small></label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="BME_input">BME</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="BSE_input">BSE</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="CEE_input">CEE</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="CHE_input">CHE</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="CHEM_input">CHEM</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="CMPE_input">CMPE</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="CS_input">CS</label>
+			  </div>
+		    </div>
+		</div>
+		
+		<div class="col-xs-4">
+		    <div class="form-group">
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="ECT_input">ECT</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="EE_input">EE</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="EMA_input">EMA</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="ENG_input">ENG</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="ENVSCI_input"><small>ENVSCI</small></label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="EP_input">EP</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="FOODSCI_input"><small>FOODSCI</small></label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="GEO_input">GEO</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="GLE_input">GLE</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="IE_input">IE</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="LMS_input">LMS</label>
+			  </div>
+			  <div class="checkbox">
+			    <label><input type="checkbox" id="MatE_input">MatE</label>
+			  </div>
+		    </div>
+		</div>
+		
+		
+        <div class="col-xs-4">
+		    <div class="form-group">
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="MATH_input">MATH</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="ME_input">ME</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="MPHY_input">MPHY</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="MS_input">MS</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="MSE_input">MSE</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="NEEP_input">NEEP</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="OTM_input">OTM</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="PHM_input">PHM</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="PHY_input">PHY</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="STAT_input">STAT</label>
+		      </div>
+		      <div class="checkbox">
+		        <label><input type="checkbox" id="TOX_input">TOX</label>
+		      </div>
+		    </div>
         </div>
-          </div>
-          <div class="col-xs-4">
-        <div class="form-group">
-          <div class="checkbox">
-            <label><input type="checkbox" id="FOODSCI_input">FOODSCI</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="GEO_input">GEO</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="GLE_input">GLE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="IE_input">IE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="LMS_input">LMS</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="MatE_input">MatE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="MATH_input">MATH</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="ME_input">ME</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="MPHY_input">MPHY</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="MS_input">MS</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="MSE_input">MSE</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="NEEP_input">NEEP</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="OTM_input">OTM</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="PHM_input">PHM</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="PHY_input">PHY</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="STAT_input">STAT</label>
-          </div>
-          <div class="checkbox">
-            <label><input type="checkbox" id="TOX_input">TOX</label>
-          </div>
+        
         </div>
-          </div>
-        </div>
+
 
         <br><br>
 
@@ -218,16 +231,12 @@
         </div>
           </div>
         </div>
-        <input type="submit" class="btn btn-default pull-right">
+        <input type="submit" value="Submit" class="btn btn-default pull-right">
         <br><br>
 
       </form>
 
     </div><!-- /.navbar-collapse -->
-
-    <button type="button" class="navbar-toggle collapsed visible-sm visible-md visible-lg" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-      <span class="glyphicon glyphicon-search"> Search</span>
-    </button>
 
     </div><!-- /.container-fluid -->
 
