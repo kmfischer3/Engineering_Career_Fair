@@ -154,13 +154,15 @@ None,
 268
 ]
 
-for x in range(1, len(company_ids)):
+for i in range(1, len(company_ids)):
 
-    if company_ids[x] is None:
+    company_id = company_ids[i]
+
+    if company_id is None:
         continue
 
     # Booth_id starts at zero and increments with x. For future maps, x 
     # will start where this iteration ends, and booth_id will start over
     # at zero and continue incrementing with x.
-    print (SQL_INSERT_COMPANY % (x, MONDAY_ID, company_ids[x], x) )
+    print (SQL_INSERT_COMPANY % (i, MONDAY_ID, company_id, i) )
 
