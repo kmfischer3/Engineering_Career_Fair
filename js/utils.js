@@ -99,7 +99,7 @@ function get_filter_string() {
     if ( filters.elements["I_input"].checked )
         ret_array.push("Internship");
     if ( filters.elements["C_input"].checked )
-        ret_array.push("Co-Op");
+        ret_array.push("Co-op");
     if ( filters.elements["E_input"].checked )
         ret_array.push("Entry Professional");
     if ( filters.elements["X_input"].checked )
