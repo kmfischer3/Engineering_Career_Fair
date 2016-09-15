@@ -7,6 +7,8 @@
 			return null;
 		}
 
+		mysqli_query($connection, "SET CHARACTER SET utf8");
+
 		// Download all companies from the database
 		$query = "SELECT * FROM companies ORDER BY name ASC;";
 		$all_companies = mysqli_query($connection, $query);
