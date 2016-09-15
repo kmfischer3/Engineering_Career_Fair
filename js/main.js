@@ -5,7 +5,6 @@ $(document).ready(function() {
     view("display_companies_list", view_options);
 });
 
-// After the document load event is fired, load the SVG map in the background
 window.addEventListener("load", function() {
-    $("#map_svg").load("/static/map.svg");
+    map.loadMaps();
 });
