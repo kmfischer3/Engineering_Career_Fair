@@ -22,6 +22,7 @@
 		$response = array();
 		while($company = mysqli_fetch_assoc($all_companies)) {
 			$response[$company["id"]] = $company;
+			$response[$company["id"]]["tables"] = [null, null, null];
 			unset($response[$company["id"]]["id"]); // Remove ID; already used as key
 		}
 
@@ -39,9 +40,6 @@
 		while ( $assignment = mysqli_fetch_assoc($table_assignments) ) {
 			if (!array_key_exists((int)$assignment["company_id"], $response)) {
 				continue;  // Company not in results
-			}
-			if (!array_key_exists("tables", $response[$assignment["company_id"]])) {
-				$response[$assignment["company_id"]]["tables"] = [null, null, null];
 			}
 			$response[$assignment["company_id"]]["tables"][(int)$assignment["day_id"] - 1] = $assignment["booth_id"];
 		}
