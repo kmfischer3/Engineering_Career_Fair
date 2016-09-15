@@ -96,8 +96,8 @@ function encode_degree_input() {
         degree_mask_5 |= ME_mask;
     if ( filters.elements["MPHY_input"].checked )
         degree_mask_5 |= MPHY_mask;
-    if ( filters.elements["MS_input"].checked )
-        degree_mask_5 |= MS_mask;
+    if ( filters.elements["MSandE_input"].checked )
+        degree_mask_5 |= MSandE_mask;
     if ( filters.elements["MSE_input"].checked )
         degree_mask_5 |= MSE_mask;
     if ( filters.elements["NEEP_input"].checked )

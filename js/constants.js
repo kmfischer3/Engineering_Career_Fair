@@ -80,7 +80,7 @@ var degree_mask_4_array = {
 var MATH_mask = 15728640;  //00000000111100000000000000000000
 var ME_mask = 983040;      //00000000000011110000000000000000
 var MPHY_mask = 61440;     //00000000000000001111000000000000
-var MS_mask = 3840;        //00000000000000000000111100000000
+var MSandE_mask = 3840;        //00000000000000000000111100000000
 var MSE_mask = 240;        //00000000000000000000000011110000
 var NEEP_mask = 15;        //00000000000000000000000000001111
 
@@ -88,7 +88,7 @@ var degree_mask_5_array = {
     MATH: MATH_mask,
     ME: ME_mask,
     MPHY: MPHY_mask,
-    MS: MS_mask,
+    'MS&E': MSandE_mask,
     MSE: MSE_mask,
     NEEP: NEEP_mask
 };

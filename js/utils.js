@@ -92,8 +92,8 @@ function get_filter_string() {
         ret_array.push("ME");
     if ( filters.elements["MPHY_input"].checked )
         ret_array.push("MPHY");
-    if ( filters.elements["MS_input"].checked )
-        ret_array.push("MS");
+    if ( filters.elements["MSandE_input"].checked )
+        ret_array.push("MS&E");
     if ( filters.elements["MSE_input"].checked )
         ret_array.push("MSE");
     if ( filters.elements["NEEP_input"].checked )
