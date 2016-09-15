@@ -68,8 +68,8 @@
 
 
         <label for="degree_filters_1">Degree:</label>
-          
-        <div class="row"> 
+
+        <div class="row">
 		<div class="col-xs-4">
 		    <div class="form-group">
 			  <div class="checkbox">
@@ -107,7 +107,7 @@
 			  </div>
 		    </div>
 		</div>
-		
+
 		<div class="col-xs-4">
 		    <div class="form-group">
 			  <div class="checkbox">
@@ -148,8 +148,8 @@
 			  </div>
 		    </div>
 		</div>
-		
-		
+
+
         <div class="col-xs-4">
 		    <div class="form-group">
 		      <div class="checkbox">
@@ -187,7 +187,7 @@
 		      </div>
 		    </div>
         </div>
-        
+
         </div>
 
 
@@ -241,51 +241,52 @@
     </div><!-- /.container-fluid -->
 
     </nav>
+    <div id="container">
+        <div id="company_list_view" class="content view">
 
-    <div id="company_list_view" class="content view">
+          <div class="page-header">
+            <h4 id="company_list_view_header"></h4>
+            <h4 id="company_list_view_header_filter_list"></h4>
+          </div>
 
-      <div class="page-header">
-        <h4 id="company_list_view_header"></h4>
-        <h4 id="company_list_view_header_filter_list"></h4>
-      </div>
+          <a type="button" id="show_on_map_button" class="btn btn-block btn-info" href="#">View on Map <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+          <div id="company_list"> </div>
 
-      <a type="button" id="show_on_map_button" class="btn btn-block btn-info" href="#">View on Map <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-      <div id="company_list"> </div>
-
-    </div>
-
-    <div id="company_profile" class="hidden view">
-
-      <div class="jumbotron">
-        <h1 id="company_profile_name">Company Name</h1>
-      </div>
-
-      <div class="content">
-        <h4>Find Table:</h4>
-        <div id="company_profile_day_list" class="list-group">
         </div>
 
-        <div id="company_profile_degree_position_table">
+        <div id="company_profile" class="hidden view">
+
+          <div class="jumbotron">
+            <h1 id="company_profile_name">Company Name</h1>
+          </div>
+
+          <div class="content">
+            <h4>Find Table:</h4>
+            <div id="company_profile_day_list" class="list-group">
+            </div>
+
+            <div id="company_profile_degree_position_table">
+            </div>
+
+            <div id="company_profile_citizenship">
+            </div>
+
+            <div id="company_profile_description" class="well">
+              <h4></h4>
+              <p></p>
+              <a id="company_profile_website" href="#">Website</a>
+            </div>
+
+          </div>
+
         </div>
 
-        <div id="company_profile_citizenship">
+        <div id="map_view" class="hidden view">
+          <div class="page-header">
+            <h4 id="map_view_title">Map</h4>
+          </div>
+          <div id="map_svg"></div>
         </div>
-
-        <div id="company_profile_description" class="well">
-          <h4></h4>
-          <p></p>
-          <a id="company_profile_website" href="#">Website</a>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div id="map_view" class="hidden view">
-      <div class="page-header">
-        <h4 id="map_view_title">Map</h4>
-      </div>
-      <div id="map_svg"></div>
     </div>
 
   </body>
