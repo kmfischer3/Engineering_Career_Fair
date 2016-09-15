@@ -27,11 +27,11 @@ var map = {
 
         map.resetTables();
 
-        for (var company_id in options.company_ids) {
+        options.company_ids.forEach(function(company_id, index, array) {
             var company = data[company_id];
 
             if (company.tables[options.day] != null)
                 map.highlightTable(company.tables[options.day]);
-        }
+        });
     }
 };
