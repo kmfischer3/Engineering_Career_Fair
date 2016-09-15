@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/kmfischer3/Engineering_Career_Fair/issues"
   },
-  "homepage": "https://github.com/kmfischer3/Engineering_Career_Fair#readme"
+  "homepage": "https://github.com/kmfischer3/Engineering_Career_Fair#readme",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "browser-sync": "*",
+    "gulp-jshint": "*",
+    "gulp-svgmin": "*",
+    "gulp-htmlmin": "*"
+  }
 }
