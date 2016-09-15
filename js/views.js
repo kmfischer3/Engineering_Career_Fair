@@ -319,6 +319,7 @@ var views = {
             company_ids: view_options.company_ids,
             day: view_options.day
         });
+        map.showMap(view_options.day);
         $("#map_view_title").text(get_day_string(view_options.day));
 
         $(".view").addClass("hidden");
@@ -342,6 +343,7 @@ var views = {
     view_map_highlight_table: function(options) {
         map.resetTables();
         map.highlightTable(options.table_id);
+        map.showMap(options.day);
         $("#map_view_title").text(get_day_string(options.day));
 
         $(".view").addClass("hidden");
