@@ -3,7 +3,23 @@ var views = {
         company = data[company_id];
 
         // display the company name in the jumbotron div
-        $("#company_profile_name").text(company.name);
+        $("#company_profile_name").text(company.name);    // display the company description
+        $("#company_profile_description > h4").text("More about " + company.name);
+        $("#company_profile_description_text").text("Loading, please wait...");
+
+        // create an async ajax call to load the full description
+        $.ajax("/static/descriptions/" + company_id.toString() + ".html").done(function(data) {
+            $("#company_profile_description_text").html(data);
+        }).fail(function(data) {
+            $("#company_profile_description_text").text("Loading description failed. Sorry :(");
+        });
+
+        // display the company website. If no website, then hide the link
+        if ( company.website != null ) {
+            $( "#company_profile_website" ).attr('href', company.website).show();
+        } else {
+            $( "#company_profile_website" ).hide();
+        }
 
         // create day_company_booth list with buttons to trigger the map view with the corresponding booth highlighted
         function create_link(table_id, day) {
@@ -100,7 +116,7 @@ var views = {
                 table_body += '</tr>';
             }
         }
-        
+
         /* POPULATE DEGREE MASK 4 ROWS*/
         for (var d_key in degree_mask_4_array) {
 
@@ -121,7 +137,7 @@ var views = {
                 table_body += '</tr>';
             }
         }
-        
+
         /* POPULATE DEGREE MASK 5 ROWS*/
         for (var d_key in degree_mask_5_array) {
 
@@ -142,7 +158,7 @@ var views = {
                 table_body += '</tr>';
             }
         }
-        
+
         /* POPULATE DEGREE MASK 6 ROWS*/
         for (var d_key in degree_mask_6_array) {
 
@@ -205,18 +221,6 @@ var views = {
             $("#company_profile_citizenship").html('<h4>Citizenship requirements: <small>No info submitted</small></h4>');
         }
 
-
-        // display the company description
-        $("#company_profile_description > h4").text("More about " + company.name);
-        $("#company_profile_description > p").text(company.description);
-
-        // display the company website. If the company has not provided a website, then hide the website div
-        if ( company.website != null ) {
-            $( "#company_profile_website" ).attr('href', company.website).show();
-        } else {
-            $( "#company_profile_website" ).hide();
-        }
-
         $(".view").addClass('hidden');
         $("#company_profile").removeClass('hidden');
     },
@@ -274,7 +278,7 @@ var views = {
         // Add a heading to the view
         if ("day" in view_options) {
             $("#company_list_view_header").text(get_day_string(view_options.day));
-            
+
             // Add the filters string to the header view, if filters (excluding day) have been selected
             var filter_string = get_filter_string();
             if ( filter_string != null ) {
@@ -283,16 +287,16 @@ var views = {
             } else {
             	$("#company_list_view_header_filter_list").hide();
             }
-            
-            
+
+
         } else if ("search" in view_options && view_options.search) {
             //hiding this div here because we are NOT combining the search and filters at this time
             //TODO add a clear button and clear all the filters when user enters search terms, otherwise
             //it is unobvious that their search is not restricted to those filters
             $("#company_list_view_header_filter_list").hide();
-            
+
             $("#company_list_view_header").text("Search");
-            
+
             // possible solution for displaying search term in the same way that filter selections are displayed
             // but I'm not sure if I like this yet, which is why I am leaving it commented out
             //$("#company_list_view_header").html("Search: <small>" + $("#searchterm").val() + "</small>");
