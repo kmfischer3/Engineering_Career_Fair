@@ -2,7 +2,11 @@ $( document ).ready(function() {
     $( "#search" ).submit(function( event ) {
         var result = search_companies( $("#searchterm").val() );
         $('#navbar-collapse-1').collapse('hide');
-        view("display_companies_list", {company_ids: result, search: true});
+        view("display_companies_list", {
+            company_ids: result,
+            search: true,
+            source: SOURCE_SEARCH
+        });
         event.preventDefault();
     });
 
@@ -70,7 +74,7 @@ function encode_degree_input() {
         degree_mask_3 |= ENVSCI_mask;
     if ( filters.elements["EP_input"].checked )
         degree_mask_3 |= EP_mask;
-        
+
     // Encode the degrees in the fourth mask
     if ( filters.elements["FOODSCI_input"].checked )
         degree_mask_4 |= FOODSCI_mask;
@@ -198,7 +202,8 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
     var view_options =
         {
             day: day_input,
-            company_ids: results
+            company_ids: results,
+            source: SOURCE_FILTER
         };
 
     return view_options;

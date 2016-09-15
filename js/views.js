@@ -229,7 +229,8 @@ var views = {
      * view_options: {
      *   day: 1,
      *   company_ids: [1,2,3],
-     *   search: false
+     *   search: false,
+     *   source: SOURCE_SEARCH | SOURCE_FILTER
      * }
      */
     display_companies_list: function(view_options) {
@@ -276,30 +277,26 @@ var views = {
         }
 
         // Add a heading to the view
-        if ("day" in view_options) {
-            $("#company_list_view_header").text(get_day_string(view_options.day));
+        if ("source" in view_options) {
+            switch (view_options.source) {
+              case SOURCE_FILTER:
+                  $("#company_list_view_header").text(get_day_string(view_options.day));
+                  utils.display_filter_string($("#company_list_view_header_filter_list"));
+                  break;
+              case SOURCE_SEARCH:
+              default:
+                  //hiding this div here because we are NOT combining the search and filters at this time
+                  //TODO add a clear button and clear all the filters when user enters search terms, otherwise
+                  //it is unobvious that their search is not restricted to those
+                  $("#company_list_view_header_filter_list").hide();
+                  $("#company_list_view_header").text("Search");
 
-            // Add the filters string to the header view, if filters (excluding day) have been selected
-            var filter_string = get_filter_string();
-            if ( filter_string != null ) {
-            	$("#company_list_view_header_filter_list").html("<small>Filters: " + filter_string + "</small>");
-            	$("#company_list_view_header_filter_list").show();
-            } else {
-            	$("#company_list_view_header_filter_list").hide();
+                  // possible solution for displaying search term in the same way that filter selections are displayed
+                  // but I'm not sure if I like this yet, which is why I am leaving it commented out
+                  //$("#company_list_view_header").html("Search: <small>" + $("#searchterm").val() + "</small>");
             }
-
-
-        } else if ("search" in view_options && view_options.search) {
-            //hiding this div here because we are NOT combining the search and filters at this time
-            //TODO add a clear button and clear all the filters when user enters search terms, otherwise
-            //it is unobvious that their search is not restricted to those filters
+        } else {
             $("#company_list_view_header_filter_list").hide();
-
-            $("#company_list_view_header").text("Search");
-
-            // possible solution for displaying search term in the same way that filter selections are displayed
-            // but I'm not sure if I like this yet, which is why I am leaving it commented out
-            //$("#company_list_view_header").html("Search: <small>" + $("#searchterm").val() + "</small>");
         }
 
         // Display the view

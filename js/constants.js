@@ -1,8 +1,8 @@
 /*
 
 D_MASK_1:	AMEP	AOS	ASPHYS	BIOCHEM	BME	BSE
-D_MASK_2:	CEE	CHE	CHEM	CMPE	CS	ECT	
-D_MASK_3:	EE	EMA	ENG	ENVSCI	EP	
+D_MASK_2:	CEE	CHE	CHEM	CMPE	CS	ECT
+D_MASK_3:	EE	EMA	ENG	ENVSCI	EP
 D_MASK_4:	FOODSCI	GEO	GLE	IE	LMS	MatE
 D_MASK_5:	MATH	ME	MPHY	MS	MSE	NEEP
 D_MASK_6:	OTM	PHM	PHY	STAT	TOX
@@ -19,11 +19,11 @@ var BME_mask = 240;        //00000000000000000000000011110000
 var BSE_mask = 15;         //00000000000000000000000000001111
 
 var degree_mask_1_array = {
-    AMEP: AMEP_mask, 
-    AOS: AOS_mask, 
-    ASPHYS: ASPHYS_mask, 
-    BIOCHEM: BIOCHEM_mask, 
-    BME: BME_mask, 
+    AMEP: AMEP_mask,
+    AOS: AOS_mask,
+    ASPHYS: ASPHYS_mask,
+    BIOCHEM: BIOCHEM_mask,
+    BME: BME_mask,
     BSE: BSE_mask
 };
 
@@ -36,11 +36,11 @@ var CS_mask = 240;         //00000000000000000000000011110000
 var ECT_mask = 15;         //00000000000000000000000000001111
 
 var degree_mask_2_array = {
-    CEE: CEE_mask, 
-    CHE: CHE_mask, 
-    CHEM: CHEM_mask, 
-    CMPE: CMPE_mask, 
-    CS: CS_mask, 
+    CEE: CEE_mask,
+    CHE: CHE_mask,
+    CHEM: CHEM_mask,
+    CMPE: CMPE_mask,
+    CS: CS_mask,
     ECT: ECT_mask
 };
 
@@ -52,10 +52,10 @@ var ENVSCI_mask = 240;     //00000000000000000000000011110000
 var EP_mask = 15;          //00000000000000000000000000001111
 
 var degree_mask_3_array = {
-    EE: EE_mask, 
-    EMA: EMA_mask, 
-    ENG: ENG_mask, 
-    ENVSCI: ENVSCI_mask, 
+    EE: EE_mask,
+    EMA: EMA_mask,
+    ENG: ENG_mask,
+    ENVSCI: ENVSCI_mask,
     EP: EP_mask
 };
 
@@ -68,11 +68,11 @@ var LMS_mask = 240;          //00000000000000000000000011110000
 var MatE_mask = 15;          //00000000000000000000000000001111
 
 var degree_mask_4_array = {
-    FOODSCI: FOODSCI_mask, 
-    GEO: GEO_mask, 
-    GLE: GLE_mask, 
-    IE: IE_mask, 
-    LMS: LMS_mask, 
+    FOODSCI: FOODSCI_mask,
+    GEO: GEO_mask,
+    GLE: GLE_mask,
+    IE: IE_mask,
+    LMS: LMS_mask,
     MatE: MatE_mask
 };
 
@@ -85,11 +85,11 @@ var MSE_mask = 240;        //00000000000000000000000011110000
 var NEEP_mask = 15;        //00000000000000000000000000001111
 
 var degree_mask_5_array = {
-    MATH: MATH_mask, 
-    ME: ME_mask, 
-    MPHY: MPHY_mask, 
-    MS: MS_mask, 
-    MSE: MSE_mask, 
+    MATH: MATH_mask,
+    ME: ME_mask,
+    MPHY: MPHY_mask,
+    MS: MS_mask,
+    MSE: MSE_mask,
     NEEP: NEEP_mask
 };
 
@@ -101,10 +101,10 @@ var STAT_mask = 240;       //00000000000000000000000011110000
 var TOX_mask = 15;         //00000000000000000000000000001111
 
 var degree_mask_6_array = {
-    OTM: OTM_mask, 
-    PHM: PHM_mask, 
-    PHY: PHY_mask, 
-    STAT: STAT_mask, 
+    OTM: OTM_mask,
+    PHM: PHM_mask,
+    PHY: PHY_mask,
+    STAT: STAT_mask,
     TOX: TOX_mask
 };
 
@@ -115,9 +115,9 @@ var E_mask = 2236962;    //00000000001000100010001000100010
 var X_mask = 1118481;    //00000000000100010001000100010001
 
 var position_mask_array = {
-    I: I_mask, 
-    C: C_mask, 
-    E: E_mask, 
+    I: I_mask,
+    C: C_mask,
+    E: E_mask,
     X: X_mask
 };
 
@@ -126,4 +126,9 @@ var US_mask = 4;  //100
 var PR_mask = 2;  //010
 var VH_mask = 1;  //001
 
+/* EVENT SOURCES */
+var SOURCE_SEARCH = 1;
+var SOURCE_FILTER = 2;
+
+/* OTHER CONSTANTS */
 var DEFAULT_DAY_ID = 0;

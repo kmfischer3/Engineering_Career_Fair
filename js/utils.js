@@ -1,3 +1,18 @@
+var utils = {};
+
+/*
+ * Add the filters string to the header view, but only
+ *   if filters (excluding day) have been selected.
+ */
+utils.display_filter_string = function(element) {
+    var filter_string = get_filter_string();
+    if ( filter_string != null ) {
+        element.html("<small>Filters: " + filter_string + "</small>").show();
+    } else {
+        element.hide();
+    }
+}
+
 function get_day_string(day) {
 
     if ( day == 0 )
@@ -6,9 +21,10 @@ function get_day_string(day) {
         return "Wednesday, Sept. 21";
     if ( day == 2 )
         return "Wednesday, Sept. 28";
-        
+
     return "No Map Data";
 }
+
 function get_filter_string() {
 
 	// loop through form elements, if element is checked, add it to the return string
@@ -54,7 +70,7 @@ function get_filter_string() {
         ret_array.push("ENVSCI");
     if ( filters.elements["EP_input"].checked )
         ret_array.push("EP");
-        
+
     // Deg 4
     if ( filters.elements["FOODSCI_input"].checked )
         ret_array.push("FOODSCI");
@@ -82,7 +98,7 @@ function get_filter_string() {
         ret_array.push("MSE");
     if ( filters.elements["NEEP_input"].checked )
         ret_array.push("NEEP");
-        
+
     // Deg 6
     if ( filters.elements["OTM_input"].checked )
         ret_array.push("OTM");
@@ -94,7 +110,7 @@ function get_filter_string() {
         ret_array.push("STAT");
     if ( filters.elements["TOX_input"].checked )
         ret_array.push("TOX");
-        
+
     // Position
     if ( filters.elements["I_input"].checked )
         ret_array.push("Internship");
@@ -104,7 +120,7 @@ function get_filter_string() {
         ret_array.push("Entry Professional");
     if ( filters.elements["X_input"].checked )
         ret_array.push("Experienced Professional");
-        
+
     // Citizen
     if ( filters.elements["US_input"].checked )
         ret_array.push("US Citizen");
@@ -112,13 +128,13 @@ function get_filter_string() {
         ret_array.push("Permanent US Resident");
     if ( filters.elements["VH_input"].checked )
         ret_array.push("Visa Holder");
-        
+
     console.log(ret_array);
-        
+
     if (ret_array.length != 0)
         return ret_array.join(", ");
-        
-    // return null if no filters selected. The filters-list div will be hidden in this case
+
+    // return null if no filters selected.
     return null;
 
 }
