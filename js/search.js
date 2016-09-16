@@ -166,6 +166,18 @@ function encode_citizenship_input() {
 
 }
 
+function filter_by_day(day) {
+    var results = [];
+
+    for (var company_id in data) {
+        var company = data[company_id];
+        if (company.tables[day] !== null)
+            results.push(company_id);
+    }
+
+    return results;
+}
+
 function filter_companies(degree_masks, position_mask, citizenship_mask, day_input) {
 
     console.log({
@@ -173,6 +185,15 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
         position_mask: position_mask,
         citizenship_mask: position_mask
     });
+
+    if (degree_masks[0] === -1 && degree_masks[1] === -1 && degree_masks[2] === -1 &&
+        degree_masks[3] === -1 && degree_masks[4] === -1 && degree_masks[5] === -1 &&
+        position_mask === -1 && citizenship_mask === -1) {
+        return {
+            day: day_input,
+            company_ids: filter_by_day(day_input)
+        };
+    }
 
     // Combine position and degree masks
     var degree_mask_1 = ( degree_masks[0] & position_mask );
