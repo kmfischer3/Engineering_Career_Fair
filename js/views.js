@@ -345,5 +345,10 @@ var views = {
 
         $(".view").addClass("hidden");
         $("#map_view").removeClass("hidden");
+    },
+    
+    search_page: function() {
+        $(".view").addClass("hidden");
+        $("#search_and_filter").removeClass("hidden");
     }
 };
