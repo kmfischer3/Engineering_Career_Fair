@@ -48,14 +48,14 @@ gulp.task('build_descriptions', function() {
 });
 
 gulp.task('build_map_svg', function() {
-    gulp.src('static/map.svg')
+    /*gulp.src('static/*.svg')
         .pipe(svgmin({
             plugins: [{
                 mergePaths: false,
                 cleanupIDs: false
             }]
         }))
-        .pipe(gulp.dest('build/static/'));
+        .pipe(gulp.dest('build/static/'));*/  
 });
 
 gulp.task('build', ['build_html', 'build_js', 'build_css', 'build_map_svg',

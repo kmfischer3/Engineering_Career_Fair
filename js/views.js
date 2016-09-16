@@ -311,7 +311,7 @@ var views = {
      * }
      */
     display_companies_map: function(view_options) {
-        map.resetTables();
+        map.resetTables(view_options.day);
         map.highlightCompanies({
             company_ids: view_options.company_ids,
             day: view_options.day
@@ -338,8 +338,8 @@ var views = {
      * }
      */
     view_map_highlight_table: function(options) {
-        map.resetTables();
-        map.highlightTable(options.table_id);
+        map.resetTables(options.day);
+        map.highlightTable(options.day, options.table_id);
         map.showMap(options.day);
         $("#map_view_title").text(get_day_string(options.day));
 
