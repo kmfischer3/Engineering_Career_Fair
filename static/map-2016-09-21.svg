@@ -14,8 +14,10 @@
    preserveAspectRatio="X200Y200 meet"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="map-2016-09-21.svg">
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="map-2016-09-21.svg"
+   width="100%"
+   height="100%">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,22 +27,22 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.25000001"
-     inkscape:cx="1872.9076"
-     inkscape:cy="-1325.7765"
+     inkscape:zoom="1"
+     inkscape:cx="1025.4472"
+     inkscape:cy="-129.51245"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer4"
      showgrid="true"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
      guidetolerance="25"
-     inkscape:window-width="1239"
-     inkscape:window-height="613"
-     inkscape:window-x="6"
-     inkscape:window-y="5"
-     inkscape:window-maximized="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1054"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
      showguides="true">
     <inkscape:grid
        type="xygrid"
@@ -63,7 +65,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -2434,7 +2436,7 @@
            height="100"
            x="4137.8701"
            y="1013.7244" /></flowRegion><flowPara
-         id="flowPara5002"></flowPara></flowRoot>  </g>
+         id="flowPara5002" /></flowRoot>  </g>
   <g
      inkscape:groupmode="layer"
      id="layer4"
@@ -2575,15 +2577,15 @@
          id="tspan3795">Associates</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:42.38243484px;line-height:125%;font-family:sans-serif;text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none"
-       x="1070.4336"
-       y="1437.5936"
+       style="font-size:42.38243484px;font-style:normal;font-weight:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:sans-serif"
+       x="1069.3546"
+       y="1443.6798"
        id="text3477-4-5"
        sodipodi:linespacing="125%"
        transform="scale(0.97016802,1.0307493)"><tspan
          sodipodi:role="line"
-         x="1070.4336"
-         y="1437.5936"
+         x="1069.3546"
+         y="1443.6798"
          id="tspan3776">Cabela's</tspan></text>
     <text
        xml:space="preserve"
@@ -2891,5 +2893,17 @@
          x="3267.3562"
          y="2017.3483"
          id="tspan3578-3-1-5">Plexus</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:38.94368362px;font-style:normal;font-weight:normal;text-align:end;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:sans-serif"
+       x="1308.5977"
+       y="1054.7823"
+       id="text3477-4-75"
+       sodipodi:linespacing="125%"
+       transform="scale(0.76236611,1.3117057)"><tspan
+         sodipodi:role="line"
+         x="1308.5977"
+         y="1054.7823"
+         id="tspan3578-35">Astronautics</tspan></text>
   </g>
 </svg>

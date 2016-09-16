@@ -45,7 +45,7 @@ None,
 203,
 204,
 
-209, 
+209,
 212,
 214,
 215,
@@ -183,7 +183,7 @@ None,
 24,
 28,
 
-None,        #(15)
+306,        #(15)
 56,
 66,
 75,
@@ -458,10 +458,10 @@ for i in range(0, TOTAL_NUM_TABLES+1):
 
     if company_id1 is not None:
         print (SQL_INSERT_COMPANY % (MONDAY_ID, company_id1, booth_id) )
-        
+
     if company_id2 is not None:
         print (SQL_INSERT_COMPANY % (FIRST_WEDNESDAY_ID, company_id2, booth_id) )
-    
+
     if company_id3 is not None:
         print (SQL_INSERT_COMPANY % (SECOND_WEDNESDAY_ID, company_id3, booth_id) )
 
