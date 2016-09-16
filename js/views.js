@@ -264,10 +264,9 @@ var views = {
         if ("day" in view_options) {
             $("#show_on_map_button")
                 .off()
-                .click({
-                    day: view_options.day,
-                    company_ids: view_options.company_ids
-                }, function(e) {
+                .click(
+                  view_options
+                  , function(e) {
                     view("display_companies_map", e.data);
                     e.preventDefault();
                 })
@@ -285,14 +284,8 @@ var views = {
                   break;
               case SOURCE_SEARCH:
               default:
-                  //hiding this div here because we are NOT combining the search and filters at this time
-                  //TODO add a clear button and clear all the filters when user enters search terms, otherwise
-                  //it is unobvious that their search is not restricted to those
                   $("#company_list_view_header_filter_list").hide();
                   $("#company_list_view_header").text("Search");
-
-                  // possible solution for displaying search term in the same way that filter selections are displayed
-                  // but I'm not sure if I like this yet, which is why I am leaving it commented out
                   //$("#company_list_view_header").html("Search: <small>" + $("#searchterm").val() + "</small>");
             }
         } else {
@@ -319,6 +312,21 @@ var views = {
         map.showMap(view_options.day);
         $("#map_view_title").text(get_day_string(view_options.day));
 
+        // Add a heading to the view
+        if ("source" in view_options) {
+            switch (view_options.source) {
+              case SOURCE_FILTER:
+                  utils.display_filter_string($("#map_view_header_filter_list"));
+                  break;
+              case SOURCE_SEARCH:
+              default:
+                  $("#map_view_header_filter_list").hide();
+                  //$("#company_list_view_header").html("Search: <small>" + $("#searchterm").val() + "</small>");
+            }
+        } else {
+            $("#map_view_header_filter_list").hide();
+        }
+
         $(".view").addClass("hidden");
         $("#map_view").removeClass("hidden");
     },
@@ -342,11 +350,12 @@ var views = {
         map.highlightTable(options.day, options.table_id);
         map.showMap(options.day);
         $("#map_view_title").text(get_day_string(options.day));
+        $("#map_view_header_filter_list").hide();
 
         $(".view").addClass("hidden");
         $("#map_view").removeClass("hidden");
     },
-    
+
     search_page: function() {
         $(".view").addClass("hidden");
         $("#search_and_filter").removeClass("hidden");

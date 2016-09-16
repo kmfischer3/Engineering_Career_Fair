@@ -43,6 +43,7 @@ var map = {
     loadMaps: function() {
         $("#map_svg_0").load("/static/map-2016-09-19.svg");
         $("#map_svg_1").load("/static/map-2016-09-21.svg");
+        $("#map_svg_2").load("/static/map-2016-09-28.svg");
         // TODO: update to support loading maps for multiple days.
     },
 
