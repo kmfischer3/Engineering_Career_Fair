@@ -175,6 +175,8 @@ function filter_by_day(day) {
             results.push(company_id);
     }
 
+    results.sort(utils.sort_companies);
+
     return results;
 }
 
@@ -219,6 +221,8 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
                  results.push(company_id);
              }
     }
+
+    results.sort(utils.sort_companies);
 
     var view_options =
         {

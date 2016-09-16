@@ -13,6 +13,15 @@ utils.display_filter_string = function(element) {
     }
 }
 
+utils.sort_companies = function(a, b) {
+    if (data[a].name < data[b].name)
+        return -1;
+    else if (data[a].name > data[b].name)
+        return 1;
+    else
+        return 0;
+}
+
 function get_day_string(day) {
 
     if ( day == 0 )
