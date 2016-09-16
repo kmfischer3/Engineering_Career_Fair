@@ -4,6 +4,8 @@ var browserSync = require('browser-sync');
 var jshint = require('gulp-jshint');
 var svgmin = require('gulp-svgmin');
 var htmlmin = require('gulp-htmlmin');
+var argv = require('yargs').argv;
+var gulpif = require('gulp-if');
 var reload = browserSync.reload;
 
 var JS_BLOB = 'js/*.js';
@@ -21,6 +23,7 @@ gulp.task('lint', function() {
 
 gulp.task('build_html', function() {
     gulp.src(HTML_BLOB)
+        .pipe(gulpif(argv.minify, htmlmin({collapseWhitespace: true})))
         .pipe(gulp.dest('./build/'));
 });
 
@@ -55,7 +58,7 @@ gulp.task('build_map_svg', function() {
                 cleanupIDs: false
             }]
         }))
-        .pipe(gulp.dest('build/static/'));*/  
+        .pipe(gulp.dest('build/static/'));*/
 });
 
 gulp.task('build', ['build_html', 'build_js', 'build_css', 'build_map_svg',

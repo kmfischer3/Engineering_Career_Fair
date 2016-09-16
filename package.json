@@ -22,6 +22,8 @@
     "browser-sync": "*",
     "gulp-jshint": "*",
     "gulp-svgmin": "*",
-    "gulp-htmlmin": "*"
+    "gulp-htmlmin": "*",
+    "yargs": "*",
+    "gulp-if": "*"
   }
 }
