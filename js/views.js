@@ -289,7 +289,7 @@ var views = {
                   //$("#company_list_view_header").html("Search: <small>" + $("#searchterm").val() + "</small>");
             }
         } else {
-            $("#company_list_view_header_filter_list").hide();
+            $("#company_list_view_header").text(get_day_string(view_options.day));
         }
 
         // Display the view
