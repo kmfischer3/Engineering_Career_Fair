@@ -183,6 +183,11 @@ var views = {
         table_body += '</tbody>';
 
 
+        // if the company has not submitted any degree info, then reset table_body to say "no info submitted"
+        if ( company.degree_mask_1 == 0 && company.degree_mask_2 == 0 && company.degree_mask_3 == 0 && company.degree_mask_4 == 0 && company.degree_mask_5 == 0 && company.degree_mask_6 == 0 )
+        	table_body = '<tbody><tr><td colspan="5">No info submitted</td></tr></tbody>';
+
+
         // insert the table body into the rest of the table html
         var table_data = '\
           <table class="table">\
