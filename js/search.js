@@ -193,7 +193,8 @@ function filter_companies(degree_masks, position_mask, citizenship_mask, day_inp
         position_mask === -1 && citizenship_mask === -1) {
         return {
             day: day_input,
-            company_ids: filter_by_day(day_input)
+            company_ids: filter_by_day(day_input),
+            source: SOURCE_FILTER
         };
     }
 

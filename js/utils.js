@@ -11,7 +11,7 @@ utils.display_filter_string = function(element) {
     } else {
         element.hide();
     }
-}
+};
 
 utils.sort_companies = function(a, b) {
     if (data[a].name < data[b].name)
@@ -20,7 +20,7 @@ utils.sort_companies = function(a, b) {
         return 1;
     else
         return 0;
-}
+};
 
 function get_day_string(day) {
 

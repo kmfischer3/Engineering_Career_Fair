@@ -290,6 +290,7 @@ var views = {
             }
         } else {
             $("#company_list_view_header").text(get_day_string(view_options.day));
+            $("#company_list_view_header_filter_list").hide();
         }
 
         // Display the view
