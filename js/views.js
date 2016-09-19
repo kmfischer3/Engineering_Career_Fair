@@ -285,16 +285,19 @@ var views = {
             switch (view_options.source) {
               case SOURCE_FILTER:
                   $("#company_list_view_header").text(get_day_string(view_options.day));
+                  $("#company_list_view_header_subtext").show();
                   utils.display_filter_string($("#company_list_view_header_filter_list"));
                   break;
               case SOURCE_SEARCH:
               default:
                   $("#company_list_view_header_filter_list").hide();
                   $("#company_list_view_header").text("Search");
+                  $("#company_list_view_header_subtext").hide();
                   //$("#company_list_view_header").html("Search: <small>" + $("#searchterm").val() + "</small>");
             }
         } else {
             $("#company_list_view_header").text(get_day_string(view_options.day));
+            $("#company_list_view_header_subtext").show();
             $("#company_list_view_header_filter_list").hide();
         }
 
