@@ -6,6 +6,7 @@ var svgmin = require('gulp-svgmin');
 var htmlmin = require('gulp-htmlmin');
 var argv = require('yargs').argv;
 var gulpif = require('gulp-if');
+var sourcemaps = require('gulp-sourcemaps');
 var reload = browserSync.reload;
 
 var JS_BLOB = 'js/*.js';
@@ -29,7 +30,9 @@ gulp.task('build_html', function() {
 
 gulp.task('build_js', function() {
     gulp.src(JS_BLOB)
+        .pipe(sourcemaps.init())
         .pipe(concat('scripts.js'))
+        .pipe(sourcemaps.write('maps'))
         .pipe(gulp.dest('./build/js/'));
 });
 
