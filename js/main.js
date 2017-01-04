@@ -5,10 +5,7 @@ $(document).ready(function() {
     view("display_companies_list", view_options);
 
     // attach events to buttons
-    $("#search-button-mobile").click(function() {
-        view('search_page', null);
-    });
-    $("#search-button-desktop").click(function() {
+    $("#search-button").click(function() {
         view('search_page', null);
     });
     $("#home-button").click(function() {
