@@ -3,7 +3,7 @@ var views = {
         var company = data[company_id];
         // TODO: don't generate the company object here
         company = new Company(company_id, company.name, company.website, company.description,
-                              'AAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
+                              'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
 
         // display the company name in the jumbotron div
         $("#company_profile_name").text(company.name);    // display the company description
@@ -106,7 +106,7 @@ var views = {
         $("#company_profile_degree_position_table").html(table_data);
 
         // populate work authorization requirements
-        $("#company_profile_citizenship").html('<h4>Work authorization: <small> ' + company.get_work_authorization + '</small></h4>');
+        $("#company_profile_citizenship").html('<h4>Work authorization: <small> ' + company.get_work_authorization() + '</small></h4>');
 
         $(".view").addClass('hidden');
         $("#company_profile").removeClass('hidden');
