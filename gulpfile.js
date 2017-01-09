@@ -9,7 +9,7 @@ var gulpif = require('gulp-if');
 var sourcemaps = require('gulp-sourcemaps');
 var reload = browserSync.reload;
 
-var JS_BLOB = 'js/*.js';
+var JS_BLOB = ['js/*.js', 'js/libs/*.js'];
 var CSS_BLOB = 'css/*.css';
 var HTML_BLOB = '*.html';
 var STATIC_BLOB = 'static/*';
