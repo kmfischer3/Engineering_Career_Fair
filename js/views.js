@@ -7,12 +7,8 @@ var views = {
         $("#company_profile_description > h4").text("More about " + company.name);
         $("#company_profile_description_text").text("Loading, please wait...");
 
-        // create an async ajax call to load the full description
-        $.ajax("/static/descriptions/" + company_id.toString() + ".html").done(function(data) {
-            $("#company_profile_description_text").html(data);
-        }).fail(function(data) {
-            $("#company_profile_description_text").text("Loading description failed. Sorry :(");
-        });
+        // Asynchronously load the profile description
+        company.get_profile_description($('#company_profile_description_text').html);
 
         // display the company website. If no website, then hide the link
         if ( company.website != null ) {

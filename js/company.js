@@ -29,17 +29,23 @@ Company.prototype.attends_on_day = function(day) {
 };
 
 /**
- * Gets the long description for a company from a server and calls the
- * provided callback function with the description. It will cache the
- * description locally to prevent future server hits.
+ * Gets the profile description for a company from a server and calls
+ * the provided callback function with the description. It will cache
+ * the description locally to prevent future server hits.
  */
-Company.prototype.get_long_description = function(callback) {
+Company.prototype.get_profile_description = function(callback) {
     if (this.long_description_loaded) {
         callback(this.long_description);
     }
 
-    // TODO: download long description over the network, then cache it
-    //   and return it.
-    console.log('Company.get_long_description() not implemented');
+    $.ajax('/static/descriptions/' + this.id.toString() + '.html')
+        .done(function(data) {
+            this.long_description = data;
+            this.long_description_loaded = true;
+            callback(data);
+        })
+        .fail(function(data) {
+            callback('<p>Loading description failed. Sorry :(</p>');
+        });
 };
 
