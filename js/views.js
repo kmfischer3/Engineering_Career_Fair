@@ -1,6 +1,9 @@
 var views = {
     load_company_profile: function(company_id) {
-        company = data[company_id];
+        var company = data[company_id];
+        // TODO: don't generate the company object here
+        company = new Company(company_id, company.name, company.website, company.description,
+                              'AAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
 
         // display the company name in the jumbotron div
         $("#company_profile_name").text(company.name);    // display the company description
@@ -50,138 +53,37 @@ var views = {
         var table_body = '<tbody>';
 
 
-        /* POPULATE DEGREE MASK 1 ROWS*/
-        for (var d_key in degree_mask_1_array) {
-
-            if ( ( company.degree_mask_1 & degree_mask_1_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_1 & degree_mask_1_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
+        // Populate table with degree information
+        var major_info_found = false;
+        MAJORS.forEach(function(major) {
+            var table_row = '<tr><th scope="row">' + major + '</th>';
+            var check_added = false;
+            
+            POSITION_OFFSETS.forEach(function(position_offset) {
+                
+                if (company.attributes.bitAt(MAJOR_INDEXES[major] + position_offset)) {
+                    check_added = true;
+                    major_info_found = true;
+                    table_row += '<td><span class="glyphicon glyphicon-ok"></span></td>';
+                } else {
+                    table_row += '<td></td>';
                 }
+            });
 
-                table_body += '</tr>';
+            table_row += '</tr>';
+
+            if (check_added) {
+                table_body += table_row;
             }
-        }
-
-        /* POPULATE DEGREE MASK 2 ROWS*/
-        for (var d_key in degree_mask_2_array) {
-
-            if ( ( company.degree_mask_2 & degree_mask_2_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_2 & degree_mask_2_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 3 ROWS*/
-        for (var d_key in degree_mask_3_array) {
-
-            if ( ( company.degree_mask_3 & degree_mask_3_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_3 & degree_mask_3_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 4 ROWS*/
-        for (var d_key in degree_mask_4_array) {
-
-            if ( ( company.degree_mask_4 & degree_mask_4_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_4 & degree_mask_4_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 5 ROWS*/
-        for (var d_key in degree_mask_5_array) {
-
-            if ( ( company.degree_mask_5 & degree_mask_5_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_5 & degree_mask_5_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 6 ROWS*/
-        for (var d_key in degree_mask_6_array) {
-
-            if ( ( company.degree_mask_6 & degree_mask_6_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_6 & degree_mask_6_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
+        });
+        
         table_body += '</tbody>';
 
 
-        // if the company has not submitted any degree info, then reset table_body to say "no info submitted"
-        if ( company.degree_mask_1 == 0 && company.degree_mask_2 == 0 && company.degree_mask_3 == 0 && company.degree_mask_4 == 0 && company.degree_mask_5 == 0 && company.degree_mask_6 == 0 )
+        // If no major info found, display message "No info submitted"
+        if (!major_info_found) {
         	table_body = '<tbody><tr><td colspan="5">No info submitted</td></tr></tbody>';
+        }
 
 
         // insert the table body into the rest of the table html

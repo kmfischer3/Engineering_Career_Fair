@@ -52,6 +52,7 @@ var I_MASK = 0;
 var C_MASK = 1;
 var E_MASK = 2;
 var X_MASK = 3;
+var POSITION_OFFSETS = [I_MASK, C_MASK, E_MASK, X_MASK];
 
 /* EVENT SOURCES */
 var SOURCE_SEARCH = 1;
