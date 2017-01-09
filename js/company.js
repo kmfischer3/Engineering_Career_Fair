@@ -49,3 +49,18 @@ Company.prototype.get_profile_description = function(callback) {
         });
 };
 
+Company.prototype.get_work_authorization = function() {
+    var response = [];
+
+    if (this.attributes.bitAt(US_MASK))
+        response.push('US Citizen');
+    if (this.attributes.bitAt(PR_MASK))
+        response.push('US Permanent Resident');
+    if (this.attributes.bitAt(VH_MASK))
+        response.push('Visa Holder');
+
+    if (response.length == 0)
+        return 'No info submitted';
+
+    return response.join(', ');
+};

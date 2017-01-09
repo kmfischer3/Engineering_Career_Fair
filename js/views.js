@@ -203,24 +203,8 @@ var views = {
         // populate the table div with the table created above
         $("#company_profile_degree_position_table").html(table_data);
 
-        // create a citizenship string based on the company's citizenship mask, then add it to the div
-
-        var citizen = [];
-        var citizen_mask = company.citizen_mask;
-
-        if (citizen_mask & US_mask)
-            citizen.push("US Citizen");
-        if (citizen_mask & PR_mask)
-            citizen.push("US Permanent Resident");
-        if (citizen_mask & VH_mask)
-            citizen.push("Visa Holder");
-
-        //if the citizen array is empty at this point, that means that the company has not specified any citizenship reqs
-        if ( citizen.length > 0 ) {
-            $("#company_profile_citizenship").html('<h4>Work authorization: <small> ' + citizen.join(", ") + '</small></h4>');
-        } else {
-            $("#company_profile_citizenship").html('<h4>Work authorization: <small>No info submitted</small></h4>');
-        }
+        // populate work authorization requirements
+        $("#company_profile_citizenship").html('<h4>Work authorization: <small> ' + company.get_work_authorization + '</small></h4>');
 
         $(".view").addClass('hidden');
         $("#company_profile").removeClass('hidden');
