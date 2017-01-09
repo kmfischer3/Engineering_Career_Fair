@@ -15,8 +15,17 @@ function Company(id, name, website, description, attributes, tables) {
  * index. Returns false otherwise.
  */
 Company.prototype.attends_on_day = function(day) {
-    console.log('Company.attends_on_day() not implemented');
-    // TODO: implement
+    // If the index is outside of our tables array, return false.
+    //   (The array of days may be truncated.)
+    if (day >= this.tables.length) {
+        return false;
+    }
+
+    if (this.tables[day].length > 0) {
+        return true;
+    }
+
+    return false;
 };
 
 /**
