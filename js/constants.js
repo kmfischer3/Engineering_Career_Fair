@@ -1,3 +1,8 @@
+// Citizen indexes
+var US_MASK = 0;
+var PR_MASK = 1;
+var VH_MASK = 2;
+
 // Major indexes
 var AMEP_MASK = 4;
 var AOS_MASK = 8;
@@ -39,11 +44,6 @@ var I_MASK = 0;
 var C_MASK = 1;
 var E_MASK = 2;
 var X_MASK = 3;
-
-// Citizen indexes
-var US_MASK = 0;  //100
-var PR_MASK = 1;  //010
-var VH_MASK = 2;  //001
 
 /* EVENT SOURCES */
 var SOURCE_SEARCH = 1;
