@@ -4,40 +4,48 @@ var PR_MASK = 1;
 var VH_MASK = 2;
 
 // Major indexes
-var AMEP_MASK = 4;
-var AOS_MASK = 8;
-var ASPHYS_MASK = 12;
-var BIOCHEM_MASK = 16;
-var BME_MASK = 20;
-var BSE_MASK = 24;
-var CEE_MASK = 28;
-var CHE_MASK = 32;
-var CHEM_MASK = 36;
-var CMPE_MASK = 40;
-var CS_MASK = 44;
-var ECT_MASK = 48;
-var EE_MASK = 52;
-var EMA_MASK = 56;
-var ENG_MASK = 60;
-var ENVSCI_MASK = 64;
-var EP_MASK = 68;
-var FOODSCI_MASK = 72;
-var GEO_MASK = 26;
-var GLE_MASK = 80;
-var IE_MASK = 84;
-var LMS_MASK = 88;
-var MATE_MASK = 92;
-var MATH_MASK = 96;
-var ME_MASK = 100;
-var MPHY_MASK = 104;
-var MSANDE_MASK = 108;
-var MSE_MASK = 112;
-var NEEP_MASK = 116;
-var OTM_MASK = 120;
-var PHM_MASK = 124;
-var PHY_MASK = 128;
-var STAT_MASK = 132;
-var TOX_MASK = 136;
+var MAJOR_INDEXES = {
+    'AMEP': 4,
+    'AOS': 8,
+    'ASPHYS': 12,
+    'BIOCHEM': 16,
+    'BME': 20,
+    'BSE': 24,
+    'CEE': 28,
+    'CHE': 32,
+    'CHEM': 36,
+    'CMPE': 40,
+    'CS': 44,
+    'ECT': 48,
+    'EE': 52,
+    'EMA': 56,
+    'ENG': 60,
+    'ENVSCI': 64,
+    'EP': 68,
+    'FOODSCI': 72,
+    'GEO': 26,
+    'GLE': 80,
+    'IE': 84,
+    'LMS': 88,
+    'MatE': 92,
+    'MATH': 96,
+    'ME': 100,
+    'MPHY': 104,
+    'MS&E': 108,
+    'MSE': 112,
+    'NEEP': 116,
+    'OTM': 120,
+    'PHM': 124,
+    'PHY': 128,
+    'STAT': 132,
+    'TOX': 136
+};
+
+var MAJORS = ['AMEP', 'AOS', 'ASPHYS', 'BIOCHEM', 'BME', 'BSE', 'CEE', 'CHE',
+              'CHEM', 'CMPE', 'CS', 'ECT', 'EE', 'EMA', 'ENG', 'ENVSCI', 'EP',
+              'FOODSCI', 'GEO', 'GLE', 'IE', 'LMS', 'MatE', 'MATH', 'ME',
+              'MPHY', 'MS&E', 'MSE', 'NEEP', 'OTM', 'PHM', 'PHY', 'STAT',
+              'TOX'];
 
 // Position Offsets
 var I_MASK = 0;
