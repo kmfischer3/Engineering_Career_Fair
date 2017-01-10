@@ -14,6 +14,8 @@ $(document).ready(function() {
             company_ids: filter_by_day(DEFAULT_DAY_ID)
         });
     });
+
+    search_init();
 });
 
 window.addEventListener("load", function() {

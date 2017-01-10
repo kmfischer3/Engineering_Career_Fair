@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+function search_init() {
     $( "#search" ).submit(function( event ) {
         var result = search_companies( $("#searchterm").val() );
         $('#navbar-collapse-1').collapse('hide');
@@ -22,7 +22,7 @@ $( document ).ready(function() {
         view("display_companies_list", view_options);
         event.preventDefault();
     });
-});
+}
 
 function encode_degree_input() {
 
