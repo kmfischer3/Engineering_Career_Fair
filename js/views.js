@@ -11,7 +11,12 @@ var views = {
         $("#company_profile_description_text").text("Loading, please wait...");
 
         // Asynchronously load the profile description
-        company.get_profile_description($('#company_profile_description_text').html);
+        company.get_profile_description(function(data) {
+          // TODO: this code should not be executed if the user has excited
+          //   the current profile and vistied a new profile. (that is, if
+          //   network delay causes the result to be returned late.)
+          $('#company_profile_description_text').html(data);
+        });
 
         // display the company website. If no website, then hide the link
         if ( company.website != null ) {
@@ -58,9 +63,9 @@ var views = {
         MAJORS.forEach(function(major) {
             var table_row = '<tr><th scope="row">' + major + '</th>';
             var check_added = false;
-            
+
             POSITION_OFFSETS.forEach(function(position_offset) {
-                
+
                 if (company.attributes.bitAt(MAJOR_INDEXES[major] + position_offset)) {
                     check_added = true;
                     major_info_found = true;
@@ -76,7 +81,7 @@ var views = {
                 table_body += table_row;
             }
         });
-        
+
         table_body += '</tbody>';
 
 
