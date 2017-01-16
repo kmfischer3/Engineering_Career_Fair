@@ -132,13 +132,16 @@ var views = {
         // Create list elements for all companies
         view_options.company_ids.forEach(function(company_id, index, array) {
             var company = data[company_id];
+            // TODO: don't generate the company object here
+            company = new Company(company_id, company.name, company.website, company.description,
+                                  'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
 
             var a = $("<a/>", {
                 href: "#",
                 class: "list-group-item"
             }).click(company_id, function(e) {
                 company_id = e.data;
-                view("load_company_profile", company_id);
+                view("load_company_profile", company.id);
                 e.preventDefault();
             }).html('<h4 class="list-group-item-heading">' + company.name + '</h4>' +
                     '<p>' + company.description + '</p>')
