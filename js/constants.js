@@ -1,44 +1,51 @@
+// BitPack constants
+var BITPACK_DEGREES_EMPTY = new BitPack('AAAAAAAAAAAAAAAAAAAAAAA=');
+var BITPACK_DEGREES_ALL = new BitPack('//////////////////////8=');
+var BITPACK_WORK_AUTH_EMPTY = new BitPack('AA==');
+var BITPACK_WORK_AUTH_ALL = new BitPack('8A==');
+
 // Citizen indexes
-var US_MASK = 0;
-var PR_MASK = 1;
-var VH_MASK = 2;
+var WORK_AUTH_INDEX = 0;
+var US_INDEX = 0;
+var PR_INDEX = 1;
+var VH_INDEX = 2;
 
 // Major indexes
 var MAJOR_INDEXES = {
-    'AMEP': 4,
-    'AOS': 8,
-    'ASPHYS': 12,
-    'BIOCHEM': 16,
-    'BME': 20,
-    'BSE': 24,
-    'CEE': 28,
-    'CHE': 32,
-    'CHEM': 36,
-    'CMPE': 40,
-    'CS': 44,
-    'ECT': 48,
-    'EE': 52,
-    'EMA': 56,
-    'ENG': 60,
-    'ENVSCI': 64,
-    'EP': 68,
-    'FOODSCI': 72,
-    'GEO': 26,
-    'GLE': 80,
-    'IE': 84,
-    'LMS': 88,
-    'MatE': 92,
-    'MATH': 96,
-    'ME': 100,
-    'MPHY': 104,
-    'MS&E': 108,
-    'MSE': 112,
-    'NEEP': 116,
-    'OTM': 120,
-    'PHM': 124,
-    'PHY': 128,
-    'STAT': 132,
-    'TOX': 136
+    'AMEP': 0,
+    'AOS': 4,
+    'ASPHYS': 8,
+    'BIOCHEM': 12,
+    'BME': 16,
+    'BSE': 20,
+    'CEE': 24,
+    'CHE': 28,
+    'CHEM': 32,
+    'CMPE': 36,
+    'CS': 40,
+    'ECT': 44,
+    'EE': 48,
+    'EMA': 52,
+    'ENG': 56,
+    'ENVSCI': 60,
+    'EP': 64,
+    'FOODSCI': 68,
+    'GEO': 72,
+    'GLE': 76,
+    'IE': 80,
+    'LMS': 84,
+    'MatE': 88,
+    'MATH': 92,
+    'ME': 96,
+    'MPHY': 100,
+    'MS&E': 104,
+    'MSE': 108,
+    'NEEP': 112,
+    'OTM': 116,
+    'PHM': 120,
+    'PHY': 124,
+    'STAT': 128,
+    'TOX': 132
 };
 
 var MAJORS = ['AMEP', 'AOS', 'ASPHYS', 'BIOCHEM', 'BME', 'BSE', 'CEE', 'CHE',
@@ -48,11 +55,11 @@ var MAJORS = ['AMEP', 'AOS', 'ASPHYS', 'BIOCHEM', 'BME', 'BSE', 'CEE', 'CHE',
               'TOX'];
 
 // Position Offsets
-var I_MASK = 0;
-var C_MASK = 1;
-var E_MASK = 2;
-var X_MASK = 3;
-var POSITION_OFFSETS = [I_MASK, C_MASK, E_MASK, X_MASK];
+var I_OFFSET = 0;
+var C_OFFSET = 1;
+var E_OFFSET = 2;
+var X_OFFSET = 3;
+var POSITION_OFFSETS = [I_OFFSET, C_OFFSET, E_OFFSET, X_OFFSET];
 
 /* EVENT SOURCES */
 var SOURCE_SEARCH = 1;

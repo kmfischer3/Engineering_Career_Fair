@@ -66,11 +66,11 @@ Company.prototype.get_profile_description = function(callback) {
 Company.prototype.get_work_authorization = function() {
     var response = [];
 
-    if (this.attributes.bitAt(US_MASK))
+    if (this.attributes.bitAt(US_INDEX))
         response.push('US Citizen');
-    if (this.attributes.bitAt(PR_MASK))
+    if (this.attributes.bitAt(PR_INDEX))
         response.push('US Permanent Resident');
-    if (this.attributes.bitAt(VH_MASK))
+    if (this.attributes.bitAt(VH_INDEX))
         response.push('Visa Holder');
 
     if (response.length == 0)
