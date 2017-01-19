@@ -171,7 +171,11 @@ function filter_by_day(day) {
 
     for (var company_id in data) {
         var company = data[company_id];
-        if (company.tables[day] !== null)
+        // TODO: don't generate the company object here
+        company = new Company(company_id, company.name, company.website, company.description,
+                              'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
+
+        if (company.attends_on_day(day))
             results.push(company_id);
     }
 
