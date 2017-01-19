@@ -29,6 +29,20 @@ Company.prototype.attends_on_day = function(day) {
 };
 
 /**
+ * Returns an array of tabe numbers that a company will be present at
+ *   on the given day index.
+ * Returns an empty array if the company does not attend on the given
+ *   day index.
+ */
+Company.prototype.tables_on_day = function(day) {
+    if (day >= this.tables.length) {
+        return [];
+    }
+
+    return this.tables[day];
+};
+
+/**
  * Gets the profile description for a company from a server and calls
  * the provided callback function with the description. It will cache
  * the description locally to prevent future server hits.

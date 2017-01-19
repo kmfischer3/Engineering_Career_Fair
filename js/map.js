@@ -26,14 +26,17 @@ var map = {
      * }
      */
     highlightCompanies: function(options) {
-
         map.resetTables(options.day);
 
         options.company_ids.forEach(function(company_id, index, array) {
             var company = data[company_id];
+            // TODO: don't generate the company object here
+            company = new Company(company_id, company.name, company.website, company.description,
+                                  'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2, 3]]);
 
-            if (company.tables[options.day] != null)
-                map.highlightTable(options.day, company.tables[options.day]);
+            company.tables_on_day(options.day).forEach(function(table_number) {
+                map.highlightTable(options.day, table_number);
+            });
         });
     },
 

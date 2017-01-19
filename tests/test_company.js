@@ -35,6 +35,22 @@ describe('Company.attends_on_day()', () => {
     });
 });
 
+describe('Company.tables_on_day()', () => {
+    it('shold return [] when not attending on given day', () => {
+        var company = new Company('a', 'a', 'a', 'a', 'AAAA',
+                                  [[1], []]);
+        expect(company.tables_on_day(1)).toEqual([]);
+        expect(company.tables_on_day(2)).toEqual([]);
+    });
+
+    it('should return an array containing the tables for a given day', () => {
+        var company = new Company('a', 'a', 'a', 'a', 'AAAA',
+                                  [[1, 2], [3]]);
+        expect(company.tables_on_day(0)).toEqual([1, 2]);
+        expect(company.tables_on_day(1)).toEqual([3]);
+    });
+});
+
 describe('Company.get_work_authorization()', () => {
     it('should return "No info submitted" when no auth bits are set', () => {
         var company = new Company('a', 'a', 'a', 'a', 'AAAA', []);
@@ -57,7 +73,7 @@ describe('Company.get_work_authorization()', () => {
         expect(company.get_work_authorization()).toBe(
             'US Citizen, US Permanent Resident'
         );
-        
+
         company = new Company('a', 'a', 'a', 'a', 'YAAA', []);
         expect(company.get_work_authorization()).toBe(
             'US Permanent Resident, Visa Holder'
