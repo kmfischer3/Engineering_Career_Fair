@@ -158,19 +158,6 @@ function filter_companies(degree_pack, position_pack, authorization_pack, day) {
         company = new Company(company_id, company.name, company.website, company.description,
                               'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
 
-        if (company.attributes.boolAnd(degree_position_pack, 1)) {
-            console.log('match on degree position pack');
-        }
-        if (authorization_pack.byteAt(0) == 0) {
-            console.log('authorization_pack is zero');
-        }
-        if (company.attributes.boolAnd(authorization_pack)) {
-            console.log('authorization_pack matches');
-        }
-        if (company.attends_on_day(day)) {
-            console.log('company attends on day');
-        }
-
         // If the degree_position_pack BitPack is empty, don't filter by
         //   the degree and position information. Otherwise, ensure that at
         //   least one selected degree-position combination matches.

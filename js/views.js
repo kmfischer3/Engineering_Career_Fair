@@ -3,7 +3,7 @@ var views = {
         var company = data[company_id];
         // TODO: don't generate the company object here
         company = new Company(company_id, company.name, company.website, company.description,
-                              'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
+                              'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2, 3]]);
 
         // display the company name in the jumbotron div
         $("#company_profile_name").text(company.name);    // display the company description
@@ -26,13 +26,13 @@ var views = {
         }
 
         // create day_company_booth list with buttons to trigger the map view with the corresponding booth highlighted
-        function create_link(table_id, day) {
+        function create_link(table_ids, day) {
             return $("<a/>", {
                 href: "#",
                 class: "list-group-item"})
                 .click(
                     {
-                        table_id: table_id,
+                        table_ids: table_ids,
                         day: day
                     },
                     function(e) {
@@ -247,7 +247,7 @@ var views = {
      */
     view_map_highlight_table: function(options) {
         map.resetTables(options.day);
-        map.highlightTable(options.day, options.table_id);
+        map.highlightTables(options.day, options.table_ids);
         map.showMap(options.day);
         $("#map_view_title").text(get_day_string(options.day));
         $("#map_view_header_filter_list").hide();

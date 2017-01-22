@@ -14,9 +14,11 @@ var map = {
         // TODO: update to hide companies across all days
     },
 
-    highlightTable: function(day, table_id) {
-	      var table = document.getElementById("table" + day.toString() + "." + table_id.toString());
-	      table.classList.add("highlight");
+    highlightTables: function(day, table_ids) {
+        table_ids.forEach(function(table_id) {
+	        var table = document.getElementById("table" + day.toString() + "." + table_id.toString());
+	        table.classList.add("highlight");
+        });
     },
 
     /*
