@@ -126,12 +126,13 @@ function filter_by_day(day) {
     return results;
 }
 
-function filter_companies(degree_pack, position_pack, authorization_pack, day_input) {
+function filter_companies(degree_pack, position_pack, authorization_pack, day) {
 
     console.log({
         degree_pack: degree_pack,
         position_pack: position_pack,
-        authorization_pack: authorization_pack
+        authorization_pack: authorization_pack,
+        day: day
     });
 
     /*
@@ -139,8 +140,8 @@ function filter_companies(degree_pack, position_pack, authorization_pack, day_in
         degree_masks[3] === -1 && degree_masks[4] === -1 && degree_masks[5] === -1 &&
         position_mask === -1 && citizenship_mask === -1) {
         return {
-            day: day_input,
-            company_ids: filter_by_day(day_input),
+            day: day,
+            company_ids: filter_by_day(day),
             source: SOURCE_FILTER
         };
     }
@@ -157,6 +158,19 @@ function filter_companies(degree_pack, position_pack, authorization_pack, day_in
         company = new Company(company_id, company.name, company.website, company.description,
                               'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
 
+        if (company.attributes.boolAnd(degree_position_pack, 1)) {
+            console.log('match on degree position pack');
+        }
+        if (authorization_pack.byteAt(0) == 0) {
+            console.log('authorization_pack is zero');
+        }
+        if (company.attributes.boolAnd(authorization_pack)) {
+            console.log('authorization_pack matches');
+        }
+        if (company.attends_on_day(day)) {
+            console.log('company attends on day');
+        }
+
         // If the degree_position_pack BitPack is empty, don't filter by
         //   the degree and position information. Otherwise, ensure that at
         //   least one selected degree-position combination matches.
@@ -171,7 +185,7 @@ function filter_companies(degree_pack, position_pack, authorization_pack, day_in
         // (!degree_position_pack.boolOr(BITPACK_DEGREES_EMPTY, 1) ||
         if ((company.attributes.boolAnd(degree_position_pack, 1)) &&
             (authorization_pack.byteAt(0) == 0 || company.attributes.boolAnd(authorization_pack)) &&
-            (company.attends_on_day(day_input))) {
+            (company.attends_on_day(day))) {
             results.push(company_id);
         }
     }
@@ -180,7 +194,7 @@ function filter_companies(degree_pack, position_pack, authorization_pack, day_in
 
     var view_options =
         {
-            day: day_input,
+            day: day,
             company_ids: results,
             source: SOURCE_FILTER
         };

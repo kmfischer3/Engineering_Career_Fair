@@ -60,13 +60,14 @@ var views = {
 
         // Populate table with degree information
         var major_info_found = false;
+        var major_data = company.attributes.slice(MAJOR_DATA_INDEX);
         MAJORS.forEach(function(major) {
             var table_row = '<tr><th scope="row">' + major + '</th>';
             var check_added = false;
 
             POSITION_OFFSETS.forEach(function(position_offset) {
 
-                if (company.attributes.bitAt(MAJOR_INDEXES[major] + position_offset)) {
+                if (major_data.bitAt(MAJOR_INDEXES[major] + position_offset)) {
                     check_added = true;
                     major_info_found = true;
                     table_row += '<td><span class="glyphicon glyphicon-ok"></span></td>';

@@ -11,6 +11,7 @@ var PR_INDEX = 1;
 var VH_INDEX = 2;
 
 // Major indexes
+var MAJOR_DATA_INDEX = 1;
 var MAJOR_INDEXES = {
     'AMEP': 0,
     'AOS': 4,
