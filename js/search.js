@@ -63,22 +63,22 @@ function encode_position_input() {
     // Set mask with selected filters
     if (filters.elements['I_input'].checked) {
         for (var major in MAJOR_INDEXES) {
-            bitpack.setBit(MAJOR_INDEXES[major] + I_OFFSET)
+            bitpack.setBit(MAJOR_INDEXES[major] + I_OFFSET);
         }
     }
     if (filters.elements['C_input'].checked) {
         for (var major in MAJOR_INDEXES) {
-            bitpack.setBit(MAJOR_INDEXES[major] + C_OFFSET)
+            bitpack.setBit(MAJOR_INDEXES[major] + C_OFFSET);
         }
     }
     if (filters.elements['E_input'].checked) {
         for (var major in MAJOR_INDEXES) {
-            bitpack.setBit(MAJOR_INDEXES[major] + E_OFFSET)
+            bitpack.setBit(MAJOR_INDEXES[major] + E_OFFSET);
         }
     }
     if (filters.elements['X_input'].checked) {
         for (var major in MAJOR_INDEXES) {
-            bitpack.setBit(MAJOR_INDEXES[major] + X_OFFSET)
+            bitpack.setBit(MAJOR_INDEXES[major] + X_OFFSET);
         }
     }
 
