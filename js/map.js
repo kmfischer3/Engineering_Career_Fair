@@ -36,9 +36,7 @@ var map = {
             company = new Company(company_id, company.name, company.website, company.description,
                                   'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2, 3]]);
 
-            company.tables_on_day(options.day).forEach(function(table_number) {
-                map.highlightTable(options.day, table_number);
-            });
+            map.highlightTables(options.day, company.tables_on_day(options.day));
         });
     },
 
