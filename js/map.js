@@ -32,10 +32,6 @@ var map = {
 
         options.company_ids.forEach(function(company_id, index, array) {
             var company = data[company_id];
-            // TODO: don't generate the company object here
-            company = new Company(company_id, company.name, company.website, company.description,
-                                  'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2, 3]]);
-
             map.highlightTables(options.day, company.tables_on_day(options.day));
         });
     },

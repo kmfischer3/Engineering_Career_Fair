@@ -1,9 +1,6 @@
 var views = {
     load_company_profile: function(company_id) {
         var company = data[company_id];
-        // TODO: don't generate the company object here
-        company = new Company(company_id, company.name, company.website, company.description,
-                              'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2, 3]]);
 
         // display the company name in the jumbotron div
         $("#company_profile_name").text(company.name);    // display the company description
@@ -133,9 +130,6 @@ var views = {
         // Create list elements for all companies
         view_options.company_ids.forEach(function(company_id, index, array) {
             var company = data[company_id];
-            // TODO: don't generate the company object here
-            company = new Company(company_id, company.name, company.website, company.description,
-                                  'gAAAAAAAAQAAAArAAAAAAAAyAAAAAAzAAAAAAAAA', [[1], [2]]);
 
             var a = $("<a/>", {
                 href: "#",
