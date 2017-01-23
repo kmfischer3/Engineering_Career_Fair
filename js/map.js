@@ -14,9 +14,11 @@ var map = {
         // TODO: update to hide companies across all days
     },
 
-    highlightTable: function(day, table_id) {
-	      var table = document.getElementById("table" + day.toString() + "." + table_id.toString());
-	      table.classList.add("highlight");
+    highlightTables: function(day, table_ids) {
+        table_ids.forEach(function(table_id) {
+	        var table = document.getElementById("table" + day.toString() + "." + table_id.toString());
+	        table.classList.add("highlight");
+        });
     },
 
     /*
@@ -26,14 +28,11 @@ var map = {
      * }
      */
     highlightCompanies: function(options) {
-
         map.resetTables(options.day);
 
         options.company_ids.forEach(function(company_id, index, array) {
             var company = data[company_id];
-
-            if (company.tables[options.day] != null)
-                map.highlightTable(options.day, company.tables[options.day]);
+            map.highlightTables(options.day, company.tables_on_day(options.day));
         });
     },
 
