@@ -18,6 +18,19 @@ $(document).ready(function() {
         });
     });
 
+    $("#list-button").click(function() {
+        view('display_companies_list', {
+            day: DEFAULT_DAY_ID,
+            company_ids: filter_by_day(DEFAULT_DAY_ID)
+        });
+    });
+    $("#favorites-button").click(function() {
+        view('favorites_page', null);
+    });
+    $("#info-button").click(function() {
+        view('info_page', null);
+    });
+
     search_init();
 });
 

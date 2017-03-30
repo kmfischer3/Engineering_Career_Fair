@@ -253,5 +253,17 @@ var views = {
     search_page: function() {
         $(".view").addClass("hidden");
         $("#search_and_filter").removeClass("hidden");
+    },
+
+    favorites_page: function() {
+        $(".view").addClass("hidden");
+        $("#favorites_list_view").removeClass("hidden");
+    },
+
+    info_page: function() {
+        $(".view").addClass("hidden");
+        $("#info").removeClass("hidden");
     }
+
+
 };
