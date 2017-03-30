@@ -1,17 +1,18 @@
 var views = {
     load_company_profile: function(company_id) {
-        company = data[company_id];
+        var company = data[company_id];
 
         // display the company name in the jumbotron div
         $("#company_profile_name").text(company.name);    // display the company description
         $("#company_profile_description > h4").text("More about " + company.name);
         $("#company_profile_description_text").text("Loading, please wait...");
 
-        // create an async ajax call to load the full description
-        $.ajax("/static/descriptions/" + company_id.toString() + ".html").done(function(data) {
-            $("#company_profile_description_text").html(data);
-        }).fail(function(data) {
-            $("#company_profile_description_text").text("Loading description failed. Sorry :(");
+        // Asynchronously load the profile description
+        company.get_profile_description(function(data) {
+          // TODO: this code should not be executed if the user has excited
+          //   the current profile and vistied a new profile. (that is, if
+          //   network delay causes the result to be returned late.)
+          $('#company_profile_description_text').html(data);
         });
 
         // display the company website. If no website, then hide the link
@@ -22,13 +23,13 @@ var views = {
         }
 
         // create day_company_booth list with buttons to trigger the map view with the corresponding booth highlighted
-        function create_link(table_id, day) {
+        function create_link(table_ids, day) {
             return $("<a/>", {
                 href: "#",
                 class: "list-group-item"})
                 .click(
                     {
-                        table_id: table_id,
+                        table_ids: table_ids,
                         day: day
                     },
                     function(e) {
@@ -54,138 +55,38 @@ var views = {
         var table_body = '<tbody>';
 
 
-        /* POPULATE DEGREE MASK 1 ROWS*/
-        for (var d_key in degree_mask_1_array) {
+        // Populate table with degree information
+        var major_info_found = false;
+        var major_data = company.attributes.slice(MAJOR_DATA_INDEX);
+        MAJORS.forEach(function(major) {
+            var table_row = '<tr><th scope="row">' + major + '</th>';
+            var check_added = false;
 
-            if ( ( company.degree_mask_1 & degree_mask_1_array[d_key] ) != 0 ) {
+            POSITION_OFFSETS.forEach(function(position_offset) {
 
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_1 & degree_mask_1_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
+                if (major_data.bitAt(MAJOR_INDEXES[major] + position_offset)) {
+                    check_added = true;
+                    major_info_found = true;
+                    table_row += '<td><span class="glyphicon glyphicon-ok"></span></td>';
+                } else {
+                    table_row += '<td></td>';
                 }
+            });
 
-                table_body += '</tr>';
+            table_row += '</tr>';
+
+            if (check_added) {
+                table_body += table_row;
             }
-        }
-
-        /* POPULATE DEGREE MASK 2 ROWS*/
-        for (var d_key in degree_mask_2_array) {
-
-            if ( ( company.degree_mask_2 & degree_mask_2_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_2 & degree_mask_2_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 3 ROWS*/
-        for (var d_key in degree_mask_3_array) {
-
-            if ( ( company.degree_mask_3 & degree_mask_3_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_3 & degree_mask_3_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 4 ROWS*/
-        for (var d_key in degree_mask_4_array) {
-
-            if ( ( company.degree_mask_4 & degree_mask_4_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_4 & degree_mask_4_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 5 ROWS*/
-        for (var d_key in degree_mask_5_array) {
-
-            if ( ( company.degree_mask_5 & degree_mask_5_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_5 & degree_mask_5_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
-
-        /* POPULATE DEGREE MASK 6 ROWS*/
-        for (var d_key in degree_mask_6_array) {
-
-            if ( ( company.degree_mask_6 & degree_mask_6_array[d_key] ) != 0 ) {
-
-                table_body += '<tr><th scope="row">' + d_key + '</th>';
-
-                for (var p_key in position_mask_array) {
-
-                    if ( ( company.degree_mask_6 & degree_mask_6_array[d_key] & position_mask_array[p_key] ) != 0 ) {
-                        table_body += '<td><span class="glyphicon glyphicon-ok"></span></td>';
-                    } else {
-                        table_body += '<td></td>';
-                    }
-
-                }
-
-                table_body += '</tr>';
-            }
-        }
+        });
 
         table_body += '</tbody>';
 
 
-        // if the company has not submitted any degree info, then reset table_body to say "no info submitted"
-        if ( company.degree_mask_1 == 0 && company.degree_mask_2 == 0 && company.degree_mask_3 == 0 && company.degree_mask_4 == 0 && company.degree_mask_5 == 0 && company.degree_mask_6 == 0 )
+        // If no major info found, display message "No info submitted"
+        if (!major_info_found) {
         	table_body = '<tbody><tr><td colspan="5">No info submitted</td></tr></tbody>';
+        }
 
 
         // insert the table body into the rest of the table html
@@ -207,24 +108,8 @@ var views = {
         // populate the table div with the table created above
         $("#company_profile_degree_position_table").html(table_data);
 
-        // create a citizenship string based on the company's citizenship mask, then add it to the div
-
-        var citizen = [];
-        var citizen_mask = company.citizen_mask;
-
-        if (citizen_mask & US_mask)
-            citizen.push("US Citizen");
-        if (citizen_mask & PR_mask)
-            citizen.push("US Permanent Resident");
-        if (citizen_mask & VH_mask)
-            citizen.push("Visa Holder");
-
-        //if the citizen array is empty at this point, that means that the company has not specified any citizenship reqs
-        if ( citizen.length > 0 ) {
-            $("#company_profile_citizenship").html('<h4>Work authorization: <small> ' + citizen.join(", ") + '</small></h4>');
-        } else {
-            $("#company_profile_citizenship").html('<h4>Work authorization: <small>No info submitted</small></h4>');
-        }
+        // populate work authorization requirements
+        $("#company_profile_citizenship").html('<h4>Work authorization: <small> ' + company.get_work_authorization() + '</small></h4>');
 
         $(".view").addClass('hidden');
         $("#company_profile").removeClass('hidden');
@@ -251,7 +136,7 @@ var views = {
                 class: "list-group-item"
             }).click(company_id, function(e) {
                 company_id = e.data;
-                view("load_company_profile", company_id);
+                view("load_company_profile", company.id);
                 e.preventDefault();
             }).html('<h4 class="list-group-item-heading">' + company.name + '</h4>' +
                     '<p>' + company.description + '</p>')
@@ -356,7 +241,7 @@ var views = {
      */
     view_map_highlight_table: function(options) {
         map.resetTables(options.day);
-        map.highlightTable(options.day, options.table_id);
+        map.highlightTables(options.day, options.table_ids);
         map.showMap(options.day);
         $("#map_view_title").text(get_day_string(options.day));
         $("#map_view_header_filter_list").hide();

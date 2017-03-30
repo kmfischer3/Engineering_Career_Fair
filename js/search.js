@@ -25,145 +25,87 @@ function search_init() {
 }
 
 function encode_degree_input() {
-
     var filters = document.getElementById("filter");
 
-    var degree_mask_1 = 0;
-    var degree_mask_2 = 0;
-    var degree_mask_3 = 0;
-    var degree_mask_4 = 0;
-    var degree_mask_5 = 0;
-    var degree_mask_6 = 0;
+    var bitpack = BITPACK_DEGREES_EMPTY.slice(0);
+    var degree_selected = false;
 
-    // Encode the degrees in the first mask
-    if ( filters.elements["AMEP_input"].checked )
-        degree_mask_1 |= AMEP_mask;
-    if ( filters.elements["AOS_input"].checked )
-        degree_mask_1 |= AOS_mask;
-    if ( filters.elements["ASPHYS_input"].checked )
-        degree_mask_1 |= ASPHYS_mask;
-    if ( filters.elements["BIOCHEM_input"].checked )
-        degree_mask_1 |= BIOCHEM_mask;
-    if ( filters.elements["BME_input"].checked )
-        degree_mask_1 |= BME_mask;
-    if ( filters.elements["BSE_input"].checked )
-        degree_mask_1 |= BSE_mask;
+    MAJORS.forEach(function(major) {
+        var major_index = MAJOR_INDEXES[major];
+        if (filters.elements[major + '_input'].checked) {
+            degree_selected = true;
+            for (var i = 0; i < POSITION_OFFSETS.length; i++) {
+                bitpack.setBit(major_index + i, true);
+            }
+        }
+    });
 
-    // Encode the degrees in the second mask
-    if ( filters.elements["CEE_input"].checked )
-        degree_mask_2 |= CEE_mask;
-    if ( filters.elements["CHE_input"].checked )
-        degree_mask_2 |= CHE_mask;
-    if ( filters.elements["CHEM_input"].checked )
-        degree_mask_2 |= CHEM_mask;
-    if ( filters.elements["CMPE_input"].checked )
-        degree_mask_2 |= CMPE_mask;
-    if ( filters.elements["CS_input"].checked )
-        degree_mask_2 |= CS_mask;
-    if ( filters.elements["ECT_input"].checked )
-        degree_mask_2 |= ECT_mask;
+    // If no option checked, don't filter on this field.
+    if (!degree_selected) {
+        return BITPACK_DEGREES_ALL.slice(0);
+    }
 
-    // Encode the degrees in the third mask
-    if ( filters.elements["EE_input"].checked )
-        degree_mask_3 |= EE_mask;
-    if ( filters.elements["EMA_input"].checked )
-        degree_mask_3 |= EMA_mask;
-    if ( filters.elements["ENG_input"].checked )
-        degree_mask_3 |= ENG_mask;
-    if ( filters.elements["ENVSCI_input"].checked )
-        degree_mask_3 |= ENVSCI_mask;
-    if ( filters.elements["EP_input"].checked )
-        degree_mask_3 |= EP_mask;
-
-    // Encode the degrees in the fourth mask
-    if ( filters.elements["FOODSCI_input"].checked )
-        degree_mask_4 |= FOODSCI_mask;
-    if ( filters.elements["GEO_input"].checked )
-        degree_mask_4 |= GEO_mask;
-    if ( filters.elements["GLE_input"].checked )
-        degree_mask_4 |= GLE_mask;
-    if ( filters.elements["IE_input"].checked )
-        degree_mask_4 |= IE_mask;
-    if ( filters.elements["LMS_input"].checked )
-        degree_mask_4 |= LMS_mask;
-    if ( filters.elements["MatE_input"].checked )
-        degree_mask_4 |= MatE_mask;
-
-    // Encode the degrees in the fifth mask
-    if ( filters.elements["MATH_input"].checked )
-        degree_mask_5 |= MATH_mask;
-    if ( filters.elements["ME_input"].checked )
-        degree_mask_5 |= ME_mask;
-    if ( filters.elements["MPHY_input"].checked )
-        degree_mask_5 |= MPHY_mask;
-    if ( filters.elements["MSandE_input"].checked )
-        degree_mask_5 |= MSandE_mask;
-    if ( filters.elements["MSE_input"].checked )
-        degree_mask_5 |= MSE_mask;
-    if ( filters.elements["NEEP_input"].checked )
-        degree_mask_5 |= NEEP_mask;
-
-    // Encode the degrees in the sixth mask
-    if ( filters.elements["OTM_input"].checked )
-        degree_mask_6 |= OTM_mask;
-    if ( filters.elements["PHM_input"].checked )
-        degree_mask_6 |= PHM_mask;
-    if ( filters.elements["PHY_input"].checked )
-        degree_mask_6 |= PHY_mask;
-    if ( filters.elements["STAT_input"].checked )
-        degree_mask_6 |= STAT_mask;
-    if ( filters.elements["TOX_input"].checked )
-        degree_mask_6 |= TOX_mask;
-
-    // If no degrees selected, match all results
-    if (degree_mask_1 === 0 && degree_mask_2 === 0 && degree_mask_3 === 0 && degree_mask_4 === 0 && degree_mask_5 === 0 && degree_mask_6 === 0)
-        return [-1, -1, -1, -1, -1, -1];
-
-    return [degree_mask_1, degree_mask_2, degree_mask_3, degree_mask_4, degree_mask_5, degree_mask_6];
-
+    return bitpack;
 }
 
 function encode_position_input() {
-
     var filters = document.getElementById("filter");
-    var position_mask = 0;    // I,C,E,X
+    var bitpack = BITPACK_DEGREES_EMPTY.slice(0);
+
+    // If no option checked, don't filter on this field.
+    if (!filters.elements['I_input'].checked &&
+        !filters.elements['C_input'].checked &&
+        !filters.elements['E_input'].checked &&
+        !filters.elements['X_input'].checked) {
+        return BITPACK_DEGREES_ALL.slice(0);
+    }
 
     // Set mask with selected filters
-    if ( filters.elements["I_input"].checked )
-        position_mask |= I_mask;
-    if ( filters.elements["C_input"].checked )
-        position_mask |= C_mask;
-    if ( filters.elements["E_input"].checked )
-        position_mask |= E_mask;
-    if ( filters.elements["X_input"].checked )
-        position_mask |= X_mask;
+    var major;
+    if (filters.elements['I_input'].checked) {
+        for (major in MAJOR_INDEXES) {
+            bitpack.setBit(MAJOR_INDEXES[major] + I_OFFSET);
+        }
+    }
+    if (filters.elements['C_input'].checked) {
+        for (major in MAJOR_INDEXES) {
+            bitpack.setBit(MAJOR_INDEXES[major] + C_OFFSET);
+        }
+    }
+    if (filters.elements['E_input'].checked) {
+        for (major in MAJOR_INDEXES) {
+            bitpack.setBit(MAJOR_INDEXES[major] + E_OFFSET);
+        }
+    }
+    if (filters.elements['X_input'].checked) {
+        for (major in MAJOR_INDEXES) {
+            bitpack.setBit(MAJOR_INDEXES[major] + X_OFFSET);
+        }
+    }
 
-    // If no filters selected, match all results
-    if ( position_mask === 0 )
-        return -1;
-
-    return position_mask;
-
+    return bitpack;
 }
-function encode_citizenship_input() {
 
+function encode_citizenship_input() {
     var filters = document.getElementById("filter");
-    var citizenship_mask = 0;  // US,PR,VH
+    var bitpack = BITPACK_WORK_AUTH_EMPTY.slice(0);
+
+    // If no option checked, don't filter on this field.
+    if (!filters.elements['US_input'].checked &&
+        !filters.elements['PR_input'].checked &&
+        !filters.elements['VH_input'].checked) {
+        return BITPACK_WORK_AUTH_ALL.slice(0);
+    }
 
     // Set mask with selected filters
-    if ( filters.elements["US_input"].checked )
-        citizenship_mask |= US_mask;
-    if ( filters.elements["PR_input"].checked )
-        citizenship_mask |= PR_mask;
-    if ( filters.elements["VH_input"].checked )
-        citizenship_mask |= VH_mask;
+    if (filters.elements['US_input'].checked)
+        bitpack.setBit(US_INDEX, true);
+    if (filters.elements['PR_input'].checked)
+        bitpack.setBit(PR_INDEX, true);
+    if (filters.elements['VH_input'].checked)
+        bitpack.setBit(VH_INDEX, true);
 
-    // If no filters selected, match all results
-    if ( citizenship_mask === 0 )
-        return -1;
-
-    return citizenship_mask;
-
+    return bitpack;
 }
 
 function filter_by_day(day) {
@@ -171,7 +113,8 @@ function filter_by_day(day) {
 
     for (var company_id in data) {
         var company = data[company_id];
-        if (company.tables[day] !== null)
+
+        if (company.attends_on_day(day))
             results.push(company_id);
     }
 
@@ -180,54 +123,59 @@ function filter_by_day(day) {
     return results;
 }
 
-function filter_companies(degree_masks, position_mask, citizenship_mask, day_input) {
+function filter_companies(degree_pack, position_pack, authorization_pack, day) {
 
     console.log({
-        degree_masks: degree_masks,
-        position_mask: position_mask,
-        citizenship_mask: position_mask
+        degree_pack: degree_pack,
+        position_pack: position_pack,
+        authorization_pack: authorization_pack,
+        day: day
     });
 
+    /*
     if (degree_masks[0] === -1 && degree_masks[1] === -1 && degree_masks[2] === -1 &&
         degree_masks[3] === -1 && degree_masks[4] === -1 && degree_masks[5] === -1 &&
         position_mask === -1 && citizenship_mask === -1) {
         return {
-            day: day_input,
-            company_ids: filter_by_day(day_input),
+            day: day,
+            company_ids: filter_by_day(day),
             source: SOURCE_FILTER
         };
     }
+    */
 
     // Combine position and degree masks
-    var degree_mask_1 = ( degree_masks[0] & position_mask );
-    var degree_mask_2 = ( degree_masks[1] & position_mask );
-    var degree_mask_3 = ( degree_masks[2] & position_mask );
-    var degree_mask_4 = ( degree_masks[3] & position_mask );
-    var degree_mask_5 = ( degree_masks[4] & position_mask );
-    var degree_mask_6 = ( degree_masks[5] & position_mask );
+    var degree_position_pack = degree_pack.and(position_pack);
 
     // Find matching results
     results = [];
     for (var company_id in data) {
         company = data[company_id];
 
-        if ( (company.citizen_mask & citizenship_mask) != 0 &&
-             ((company.degree_mask_1 & degree_mask_1) != 0 ||
-              (company.degree_mask_2 & degree_mask_2) != 0 ||
-              (company.degree_mask_3 & degree_mask_3) != 0 ||
-              (company.degree_mask_4 & degree_mask_4) != 0 ||
-              (company.degree_mask_5 & degree_mask_5) != 0 ||
-              (company.degree_mask_6 & degree_mask_6) != 0) &&
-             company.tables[day_input] != null ) {
-                 results.push(company_id);
-             }
+        // If the degree_position_pack BitPack is empty, don't filter by
+        //   the degree and position information. Otherwise, ensure that at
+        //   least one selected degree-position combination matches.
+        //   Note that degree_position_pack should never be all zeros because
+        //   the encoding functions return all ones if the result is empty.
+        // If the authorization_pack BitPack's first byte is zero, it means
+        //   that no work authorization information was selected for filtering,
+        //   so we ignore it. Otherwise, at least one selected position must
+        //   match.
+        // Finally, check that the company attends on the selected day. If
+        //   not, omit them from the results.
+        // (!degree_position_pack.boolOr(BITPACK_DEGREES_EMPTY, 1) ||
+        if ((company.attributes.boolAnd(degree_position_pack, 1)) &&
+            (authorization_pack.byteAt(0) == 0 || company.attributes.boolAnd(authorization_pack)) &&
+            (company.attends_on_day(day))) {
+            results.push(company_id);
+        }
     }
 
     results.sort(utils.sort_companies);
 
     var view_options =
         {
-            day: day_input,
+            day: day,
             company_ids: results,
             source: SOURCE_FILTER
         };
