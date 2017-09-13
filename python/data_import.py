@@ -213,7 +213,7 @@ for row in r:
     # Truncate and html-ize description
     description = row['description']
     if len(description) > 140:
-        description =  description[0:140].strip(' \t\r\n.,')
+        description = description[0:140].strip(' \t\r\n.,')
         description = '%s...' % description
 
     # Output the full description to a file
