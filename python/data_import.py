@@ -70,7 +70,7 @@ US_MASK = 4  # 100
 PR_MASK = 2  # 010
 VH_MASK = 1  # 001
 
-FIELDNAMES = ('name', 'website', 'description', 'citizenship', 'day',
+FIELDNAMES = ('name', 'website', 'description', 'day', 'citizenship',
               'AMEP', 'AOS', 'ASPHYS', 'BIOCHEM', 'BME', 'BSE', 'CEE', 'CHE',
               'CHEM', 'CMPE', 'CS', 'ECT', 'EE', 'EMA', 'ENG', 'ENVSCI', 'EP',
               'FOODSCI', 'GEO', 'GLE', 'IE', 'LMS', 'MATE', 'MATH', 'ME',
@@ -119,12 +119,10 @@ rules = {
     'website': [rigidity.rules.Lower(), rigidity.rules.Unique(), UrlValidator()],
     'description': [FixDescription()],
 
-    # Citizen
     'citizenship': [rigidity.rules.Lower()],
     'day': [rigidity.rules.ReplaceValue(replacements={
-        '9/19/2016': 0,
-        '9/21/2016': 1,
-        '9/28/2016': 2
+        '1/31/2017': 0,
+        '2/2/2017': 1
     }, missing_action=rigidity.rules.ReplaceValue.ACTION_ERROR)],
 
     'AMEP': [rigidity.rules.Lower(), ValidatePositions()],
@@ -207,6 +205,9 @@ for row in r:
     if 'vh' in row['citizenship']:
         citizen_mask |= VH_MASK
 
+    # SQL-escape name
+    sql_name = row['name'].replace('\'', '\\\'')
+
     # Truncate and html-ize description
     description = row['description']
     if len(description) > 140:
@@ -221,9 +222,10 @@ for row in r:
     with open('descriptions/%i.html' % company_id, 'w') as fp:
         fp.write(long_description)
 
-
-    print(SQL_INSERT_COMPANY % (company_id, row['name'], row['website'],
+    print(SQL_INSERT_COMPANY % (company_id, sql_name, row['website'],
                                 description, citizen_mask,
                                 degree_masks[0], degree_masks[1],
                                 degree_masks[2], degree_masks[3],
                                 degree_masks[4], degree_masks[5]))
+    print('INSERT INTO day_company_booth (company_id,day_id,booth_id) VALUES (%i,%i,%i);' %
+          (company_id, row['day'] + 1, 1))
