@@ -103,6 +103,8 @@ class UrlValidator(rigidity.rules.Rule):
         if value is None:
             return None
 
+        value = value.strip()
+
         if not (value.startswith('http://') or value.startswith('https://')):
             raise ValueError('URL does not start with http:// or https://')
         if (value.find('http:', 1) != -1) or (value.find('https:', 1) != -1):
