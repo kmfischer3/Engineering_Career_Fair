@@ -40,9 +40,9 @@ var map = {
      * Load the map files in the background.
      */
     loadMaps: function() {
-        $("#map_svg_0").load("/static/map-2016-09-19.svg");
-        $("#map_svg_1").load("/static/map-2016-09-21.svg");
-        $("#map_svg_2").load("/static/map-2016-09-28.svg");
+        $("#map_svg_0").load("/static/map-2017-09-14.svg");
+        $("#map_svg_1").load("/static/map-2017-09-18.svg");
+        $("#map_svg_2").load("/static/map-2017-09-20.svg");
     },
 
     /*
