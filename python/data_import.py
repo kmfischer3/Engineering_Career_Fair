@@ -1,9 +1,20 @@
 #! /usr/bin/env python3
+'''
+Read a CSV file called dataset.csv and print SQL queries to insert the
+data into a database.
+
+This import mechanism is obsolete since the new data uses BitPack to
+store attribute data.
+'''
 import re
 import csv
 import bleach
 import markdown
 import rigidity
+
+import utils
+from constants import FIELDNAMES
+from validators import FixDescription, ValidatePositions, UrlValidator
 
 
 SQL_INSERT_COMPANY = '''
@@ -70,51 +81,8 @@ US_MASK = 4  # 100
 PR_MASK = 2  # 010
 VH_MASK = 1  # 001
 
-FIELDNAMES = ('name', 'website', 'description', 'day', 'citizenship',
-              'AMEP', 'AOS', 'ASPHYS', 'BIOCHEM', 'BME', 'BSE', 'CEE', 'CHE',
-              'CHEM', 'CMPE', 'CS', 'ECT', 'EE', 'EMA', 'ENG', 'ENVSCI', 'EP',
-              'FOODSCI', 'GEO', 'GLE', 'IE', 'LMS', 'MATE', 'MATH', 'ME',
-              'MPHY', 'MS', 'MSE', 'NEEP', 'OTM', 'PHM', 'PHY', 'STAT', 'TOX')
 reader = csv.DictReader(open('dataset.csv'), fieldnames=FIELDNAMES)
 
-
-class FixDescription(rigidity.rules.Rule):
-    def apply(self, value):
-        value = value.replace('''_x000D_
-_x000D_''', '\n')
-        value = value.replace('_x000D_', '')
-        return value
-
-
-class ValidatePositions(rigidity.rules.Rule):
-    valid_characters = ['i', 'c', 'e', 'x']
-
-    def apply(self, value):
-        if not isinstance(value, str):
-            raise TypeError('`value` must be a string')
-        for c in value:
-            if c not in self.valid_characters:
-                raise ValueError('Invalid position character: \'%s\'' % c)
-        return value
-
-
-class UrlValidator(rigidity.rules.Rule):
-    def apply(self, value):
-        if value is None:
-            return None
-
-        value = value.strip()
-
-        if not (value.startswith('http://') or value.startswith('https://')):
-            raise ValueError('URL does not start with http:// or https://')
-        if (value.find('http:', 1) != -1) or (value.find('https:', 1) != -1):
-            raise ValueError('URL contains an extra http: or https:')
-
-        # Check for a TLD, using a short, but validated list of known TLDs
-        if not re.search('\.(com|org|net|edu|jobs|us|gov|mil|co)', value):
-            raise ValueError('URL did not have a recognized TLD')
-
-        return value
 
 rules = {
     'name': [rigidity.rules.Unique()],
@@ -211,18 +179,11 @@ for row in r:
     sql_name = row['name'].replace('\'', '\\\'')
 
     # Truncate and html-ize description
-    description = row['description']
-    if len(description) > 140:
-        description = description[0:140].strip(' \t\r\n.,')
-        description = '%s...' % description
+    description = utils.truncate_description(row['description'])
 
     # Output the full description to a file
-    long_description = row['description']
-    long_description = long_description.replace(r"\'", "'")
-    long_description = bleach.clean(markdown.markdown(row['description']),
-                                    tags=bleach.ALLOWED_TAGS + ['p'])
     with open('descriptions/%i.html' % company_id, 'w') as fp:
-        fp.write(long_description)
+        fp.write(utils.format_description(row['description']))
 
     print(SQL_INSERT_COMPANY % (company_id, sql_name, row['website'],
                                 description, citizen_mask,
