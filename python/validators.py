@@ -35,7 +35,7 @@ class UrlValidator(rigidity.rules.Rule):
             raise ValueError('URL contains an extra http: or https:')
 
         # Check for a TLD, using a short, but validated list of known TLDs
-        if not re.search('\.(com|org|net|edu|jobs|us|gov|mil|co)', value):
+        if not re.search('\.(com|org|net|edu|jobs|us|gov|mil|co|ai)', value):
             raise ValueError('URL did not have a recognized TLD')
 
         return value

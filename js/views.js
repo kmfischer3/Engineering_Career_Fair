@@ -42,8 +42,8 @@ var views = {
         }
 
         $("#company_profile_day_list").empty();
-        for (var day = 0; day < 3; day++) {
-            if (company.tables[day] != null) {
+        for (var day = 0; day < company.tables.length; day++) {
+            if (company.tables[day].length != 0) {
                 create_link(company.tables[day], day)
                     .appendTo("#company_profile_day_list");
             }
