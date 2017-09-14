@@ -25,11 +25,11 @@ utils.sort_companies = function(a, b) {
 function get_day_string(day) {
 
     if ( day == 0 )
-        return "Monday, Sept. 19";
+        return "Thursday, Sept. 14";
     if ( day == 1 )
-        return "Wednesday, Sept. 21";
+        return "Monday, Sept. 18";
     if ( day == 2 )
-        return "Wednesday, Sept. 28";
+        return "Wednesday, Sept. 20";
 
     return "No Map Data";
 }
